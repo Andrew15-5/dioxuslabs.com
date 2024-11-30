@@ -1,645 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>Dioxus | An elegant GUI library for Rust</title>
+    <title>Dioxus | Fullstack crossplatform app framework for Rust</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-
-    <meta name="description" content="An elegant GUI library for Rust, inspired by React. Supports Web, Desktop, SSR, Liveview, and Mobile.">
-
-    <link rel="icon shortcut" type="image/png" href="/static/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/prism/prism.css" />
-
-
-    <!-- Social meta stuff -->
-    <!-- open graph -->
-    <meta
-      property="og:title"
-      content="Dioxus - Reliable Rust apps that run anywhere"
-    />
-
-    <meta property="og:type" content="website" />
-
-    <meta
-      property="og:description"
-      content="An elegant GUI library for Rust, inspired by React. Supports Web, Desktop, SSR, Liveview, and Mobile."
-    />
-
-    <meta property="og:url" content="https://dioxuslabs.com/" />
-
-    <meta
-      property="og:image"
-      content="https://dioxuslabs.com/static/opengraph.png"
-    />
-
-    <!-- twitter -->
-    <meta
-      name="twitter:title"
-      content="Dioxus - Reliable Rust apps that run anywhere"
-    />
-    <meta
-      name="twitter:description"
-      content="An elegant GUI library for Rust, inspired by React. Supports Web, Desktop, SSR, Liveview, and Mobile."
-    />
-    <meta
-      name="twitter:image"
-      content="https://dioxuslabs.com/static/opengraph.png"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBE72MVZ1B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EBE72MVZ1B');
-    </script>
-
-    <!-- style stuff -->
-    <!-- <link data-trunk rel="css" href="/tailwind.css" /> -->
-    <link rel="stylesheet" href="/./tailwind.css" />
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              ghmetal: "#24292f",
-              ghdarkmetal: "#161b22",
-              ideblack: "#0e1116",
-              // ideblack: "#0a0a0a",
-              // ideblack: "#0E1116",
-            },
-            fontFamily: {
-              sans: ["Lexend", "sans-serif"],
-              // sans: ["Inter var", "sans-serif"],
-            },
-            boxShadow: {
-              "3xl": "0 35px 60px -1ww5px rgba(0, 0, 0, 0.5)",
-              cutesy: "0px 0px 40px -5px rgba(255, 255, 255, 0.2)",
-              // cutesy: "0px 0px 30px -10px white",
-              // cutesy: "0px 0px 30px -10px red",
-              pop: "0px 0px 30px -10px rgba(0, 0, 0, 0.5)",
-            },
-          },
-        },
-
-        // "3xl": "0 35px 60px -1ww5px rgba(0, 0, 0, 0.5)",
-        // theme: {
-        //   extend: {
-        //     colors: {
-        //       clifford: "#da373d",
-        //     },
-        //   },
-        // },
-      };
-    </script> -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css"
-    />
-
-    <style>
-      .markdown-body {
-        box-sizing: border-box;
-        min-width: 200px;
-        max-width: 980px;
-        margin: 0 5%;
-        /* padding: 45px; */
-        list-style: disc;
-      }
-      /* body {
-        font-family: 'Lexend', sans-serif;
-      } */
-
-      @media (max-width: 767px) {
-        .markdown-body {
-          /* padding: 15px; */
-        }
-      }
-    </style>
-    <script src="/./static/darktheme.js"></script>
-    
-  </head>
-
+  <link rel="preload" href="/./wasm/dioxus_docs_site_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+            <link rel="preload" href="/./wasm/dioxus_docs_site.js" as="script">
+            <meta name="description" content="Dioxus | A fullstack crossplatform app framework for Rust. Supports Web, Desktop, SSR, Liveview, and Mobile."/><meta content="Dioxus | Fullstack crossplatform app framework for Rust" property="og:title"/><meta content="website" property="og:type"/><meta content="A fullstack crossplatform app framework for Rust. Supports Web, Desktop, SSR, Liveview, and Mobile." property="og:description"/><meta content="https://dioxuslabs.com" property="og:url"/><meta content="https://dioxuslabs.com/static/opengraph.png" property="og:image"/><meta name="twitter:title" content="Dioxus - Fullstack crossplatform app framework for Rust"/><meta name="twitter:description" content="Dioxus | A fullstack crossplatform app framework for Rust. Supports Web, Desktop, SSR, Liveview, and Mobile."/><meta name="twitter:image" content="https://dioxuslabs.com/static/opengraph.png"/><meta name="twitter:card" content="summary_large_image"/><link rel="icon shortcut" href="/assets/favicon-b3fc44cfcc39863b.png" type="image/png"/><link rel="stylesheet" href="/assets/githubmarkdown-bffb2467b168b998.css" type="text/css"/><link rel="stylesheet" href="/assets/tailwind-70f0e441ff2ebdeb.css" type="text/css"/><link rel="stylesheet" href="/assets/main-5d38c71fa8d7e4c6.css" type="text/css"/><link rel="stylesheet" href="/assets/dxp-d5edfd1794c954c9.css" type="text/css"/><link rel="stylesheet" href="/assets/material-28d6a39ffe566443.css" type="text/css"/><link rel="stylesheet" href="https://rsms.me/inter/inter.css" type="text/css"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="false"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@100;400;600&display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Lexend:wght@100;400&family=M+PLUS+1:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/><script src="/assets/ace-d38cbb6eb8610249.js"></script><script src="/assets/mode-rust-5cf60546c5e3274f.js"></script><script src="/assets/theme-github-df34093e69b6d18.js"></script><script src="https://www.googletagmanager.com/gtag/js?id=G-EBE72MVZ1B" async=true></script><script src="/assets/gtag-e066e27cedda0296.js" type="text/javascript" async=true></script></head>
   <body>
-    <div id="main"><div><pre></pre><header class="sticky top-0 z-30 bg-white shadow dark:text-gray-200 dark:bg-ideblack dark:border-b border-stone-600 "><div class="py-3 px-12 max-w-screen-2xl mx-auto flex items-center justify-between text-sm leading-6"><button class="bg-gray-100 rounded-lg p-2 mr-4 lg:hidden my-3 h-10 flex items-center text-lg z-[100] hidden"><span class="material-icons material-icons-outlined material-icons-round material-icons-sharp material-icons-two-tone md-48" style="font-size: 24px; color: rgba(0, 0, 0, 0.54); user-select: none;"><!--#-->menu<!--#--></span></button><div class="flex z-50 flex-1"><a href="/" dioxus-prevent-default="onclick" class="flex title-font font-medium items-center text-gray-900" id="" rel="" target=""><img src="https://avatars.githubusercontent.com/u/79236386?s=200&v=4" class="h-5 w-auto"/><span class="ml-3 text-xl dark:text-white font-mono">Dioxus Labs</span></a></div><div class="relative md:w-full max-w-[30rem] xl:max-w-[30rem] 2xl:max-w-[30rem] sm:mx-auto sm:flex-1"><button class="bg-gray-100 rounded-lg px-3 py-3 sm:w-full text-left text-gray-400 my-auto sm:flex sm:flex-row sm:align-middle sm:justify-between"><div class="h-full my-auto flex flex-row align-middle justify-between"><span class="material-icons material-icons-outlined material-icons-round material-icons-sharp material-icons-two-tone md-48" style="font-size: 24px; color: rgba(0, 0, 0, 0.54); user-select: none;"><!--#-->search<!--#--></span><span class="hidden sm:block pl-2">Search the docs</span></div><div class="hidden sm:block border border-gray-300 rounded-lg p-1 text-xs text-gray-400">CTRL + /</div></button></div><div class="hidden xl:flex h-full justify-end ml-2 flex-1"><div class="hidden md:flex items-center font-semibold"><nav><ul class="flex items-center space-x-2"><li><a href="/awesome" dioxus-prevent-default="onclick" class="ml-[-3.8em] md:ml-0 md:py-2 md:px-2 hover:text-sky-500 dark:hover:text-sky-400 dark:hover:bg-gray-500 hover:bg-gray-200 rounded text-lg md:text-sm" id="" rel="" target=""><!--#-->Awesome<!--#--></a></li><li><a href="/learn/0.4/" dioxus-prevent-default="onclick" class="ml-[-3.8em] md:ml-0 md:py-2 md:px-2 hover:text-sky-500 dark:hover:text-sky-400 dark:hover:bg-gray-500 hover:bg-gray-200 rounded text-lg md:text-sm" id="" rel="" target=""><!--#-->Docs<!--#--></a></li><li><a href="/blog" dioxus-prevent-default="onclick" class="ml-[-3.8em] md:ml-0 md:py-2 md:px-2 hover:text-sky-500 dark:hover:text-sky-400 dark:hover:bg-gray-500 hover:bg-gray-200 rounded text-lg md:text-sm" id="" rel="" target=""><!--#-->Blog<!--#--></a></li></ul></nav><div class="flex items-center border-l border-gray-200 ml-4 pl-4 dark:border-gray-800"><label class="sr-only" id="headlessui-listbox-label-2">Theme</label><a href="https://discord.gg/XgGxMSkvUM" dioxus-prevent-default="" class="block text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" id="" rel="noopener noreferrer" target=""><span class="sr-only">Dioxus on Discord</span><svg width="24" height="24" viewBox="0 -28.5 256 256" preserveAspectRatio="xMidYMid"><g><path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="currentColor" fill-rule="nonzero"></path></g></svg></a><a href="https://github.com/dioxuslabs/dioxus" dioxus-prevent-default="" class="ml-4 block text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" id="" rel="noopener noreferrer" target=""><span class="sr-only">Dioxus on GitHub</span><svg class="w-5 h-5" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a></div><div class="flex items-center border-l border-gray-200 ml-4 pl-6 dark:border-gray-800"><label class="sr-only" id="headlessui-listbox-label-2">Theme</label><a href="/deploy" dioxus-prevent-default="onclick" class="md:ml-0 md:py-2 md:px-3 bg-blue-500 ml-4 text-lg md:text-sm text-white rounded font-semibold" id="" rel="" target="">DEPLOY</a><pre></pre></div></div></div></div></header><section class="text-gray-600 body-font overflow-hidden dark:bg-ideblack"><div class="container lg:px-20 xl:px-48 pt-12 pb-12 mx-auto"><script>Prism.highlightAll()</script><div class="flex w-full mb-20 flex-wrap list-none"><style>.markdown-body ul { list-style: disc; }.markdown-body li { display: list-item; }.markdown-body img { max-height: 500px; margin-left: auto; margin-right: auto; padding-left: 4px; padding-right: 4px; }.markdown-body .highlight pre, .markdown-body pre { background-color: #1e1e1e }</style><article class="markdown-body"><h1 id="dioxus-0-4-server-functions-suspense-enum-router-overhauled-docs-bundler-android-support-and-more">Dioxus 0.4: Server Functions, Suspense, Enum Router, Overhauled Docs, Bundler, Android Support, and more</h1>
-<blockquote>
-<p>Aug 1, 2023</p>
-<p>
-    <a href="https://github.com/jkelleyrtp">@jkelleyrtp</a>,
-    <a href="https://github.com/demonthos">@demonthos</a>
-</p>
-<p>
-    Thanks to <a href="https://github.com/tefiledo">@tefiledo</a>
-    <a href="https://github.com/marc2332">@marc2332</a>
-    <a href="https://github.com/DogeDark">@DogeDark</a>
-</p>
-</blockquote>
+    <div id="main"><script>window.hydrate_queue=[];window.dx_hydrate=(id,data)=>{const decoded=atob(data),bytes=Uint8Array.from(decoded,(c)=>c.charCodeAt(0));if(window.hydration_callback)window.hydration_callback(id,bytes);else window.hydrate_queue.push([id,bytes])};
+</script><!--placeholder0--><!--placeholder1--><!--placeholder2--><!--placeholder3--><!--placeholder4--><!--placeholder5--><!--placeholder6--><!--placeholder7--><!--placeholder8--><!--placeholder9--><!--placeholder10--><!--placeholder11--><!--placeholder12--><!--placeholder13--><!--placeholder14--><!--placeholder15--><!--placeholder16--><!--placeholder17--><!--placeholder18--><!--placeholder19--><!--placeholder20--><!--placeholder21--><!--placeholder22--><!--placeholder23--><!--placeholder24--><!--placeholder25--><!--placeholder26--><!--placeholder27--><div class="bg-white dark:bg-black min-h-screen" data-node-hydration="28"><div class="fixed top-0 left-0 z-50 block bg-gray-100 dark:bg-opacity-70 bg-opacity-70 overflow-y-hidden search-modal-animated   dioxus-hide" style="height:100vh;width:100vw;" data-node-hydration="29,click:1"><div class="max-w-screen-sm mx-auto h-full flex flex-col"><div class="h-40"></div><div class="bg-white dark:bg-ideblack rounded-xl max-h-[calc(100%-8rem)] overflow-y-auto text-gray-800 dark:text-gray-100 border dark:border-[#a4a9ac7d]"><div class="flex flex-col flex-grow border-b p-2 gap-2 border-inherit"><div class="my-auto flex flex-row items-center"><div class="dark:invert h-5"><span class="material-icons material-icons-outlined material-icons-round material-icons-sharp material-icons-two-tone md-48" style="font-size: 20px; color: rgba(0, 0, 0, 0.54); user-select: none;" data-node-hydration="30"><!--node-id31-->search<!--#--></span></div><!--placeholder32--></div></div><ul class="p-2 flex flex-col" data-node-hydration="33"><li class="w-full rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out" data-node-hydration="34"><a href="/learn/0.5/guide" class="flex flex-row items-center gap-x-2 p-2" data-node-hydration="35,click:1"><div class="style_itemPrefix__HSCJc" data-node-hydration="36"><svg data-testid="geist-icon" height="16" viewBox="0 0 16 16" width="16" stroke-linejoin="round" style="color: currentcolor;"><path d="M14.5 13.5V6.5V5.41421C14.5 5.149 14.3946 4.89464 14.2071 4.70711L9.79289 0.292893C9.60536 0.105357 9.351 0 9.08579 0H8H3H1.5V1.5V13.5C1.5 14.8807 2.61929 16 4 16H12C13.3807 16 14.5 14.8807 14.5 13.5ZM13 13.5V6.5H9.5H8V5V1.5H3V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5ZM9.5 5V2.12132L12.3787 5H9.5ZM5.13 5.00062H4.505V6.25062H5.13H6H6.625V5.00062H6H5.13ZM4.505 8H5.13H11H11.625V9.25H11H5.13H4.505V8ZM5.13 11H4.505V12.25H5.13H11H11.625V11H11H5.13Z" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path></svg></div><div class="flex flex-col justify-between" data-node-hydration="37"><h2 class="dark:text-white"><!--node-id38-->Tutorial<!--#--></h2><!--placeholder39--></div></a></li><li class="w-full rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out" data-node-hydration="40"><a href="/learn/0.5/reference/web" class="flex flex-row items-center gap-x-2 p-2" data-node-hydration="41,click:1"><div class="style_itemPrefix__HSCJc" data-node-hydration="42"><svg data-testid="geist-icon" height="16" viewBox="0 0 16 16" width="16" stroke-linejoin="round" style="color: currentcolor;"><path d="M14.5 13.5V6.5V5.41421C14.5 5.149 14.3946 4.89464 14.2071 4.70711L9.79289 0.292893C9.60536 0.105357 9.351 0 9.08579 0H8H3H1.5V1.5V13.5C1.5 14.8807 2.61929 16 4 16H12C13.3807 16 14.5 14.8807 14.5 13.5ZM13 13.5V6.5H9.5H8V5V1.5H3V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5ZM9.5 5V2.12132L12.3787 5H9.5ZM5.13 5.00062H4.505V6.25062H5.13H6H6.625V5.00062H6H5.13ZM4.505 8H5.13H11H11.625V9.25H11H5.13H4.505V8ZM5.13 11H4.505V12.25H5.13H11H11.625V11H11H5.13Z" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path></svg></div><div class="flex flex-col justify-between" data-node-hydration="43"><h2 class="dark:text-white"><!--node-id44-->Web<!--#--></h2><!--placeholder45--></div></a></li><li class="w-full rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out" data-node-hydration="46"><a href="/learn/0.5/reference/desktop" class="flex flex-row items-center gap-x-2 p-2" data-node-hydration="47,click:1"><div class="style_itemPrefix__HSCJc" data-node-hydration="48"><svg data-testid="geist-icon" height="16" viewBox="0 0 16 16" width="16" stroke-linejoin="round" style="color: currentcolor;"><path d="M14.5 13.5V6.5V5.41421C14.5 5.149 14.3946 4.89464 14.2071 4.70711L9.79289 0.292893C9.60536 0.105357 9.351 0 9.08579 0H8H3H1.5V1.5V13.5C1.5 14.8807 2.61929 16 4 16H12C13.3807 16 14.5 14.8807 14.5 13.5ZM13 13.5V6.5H9.5H8V5V1.5H3V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5ZM9.5 5V2.12132L12.3787 5H9.5ZM5.13 5.00062H4.505V6.25062H5.13H6H6.625V5.00062H6H5.13ZM4.505 8H5.13H11H11.625V9.25H11H5.13H4.505V8ZM5.13 11H4.505V12.25H5.13H11H11.625V11H11H5.13Z" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path></svg></div><div class="flex flex-col justify-between" data-node-hydration="49"><h2 class="dark:text-white"><!--node-id50-->Desktop<!--#--></h2><!--placeholder51--></div></a></li><li class="w-full rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out" data-node-hydration="52"><a href="/learn/0.5/reference/mobile" class="flex flex-row items-center gap-x-2 p-2" data-node-hydration="53,click:1"><div class="style_itemPrefix__HSCJc" data-node-hydration="54"><svg data-testid="geist-icon" height="16" viewBox="0 0 16 16" width="16" stroke-linejoin="round" style="color: currentcolor;"><path d="M14.5 13.5V6.5V5.41421C14.5 5.149 14.3946 4.89464 14.2071 4.70711L9.79289 0.292893C9.60536 0.105357 9.351 0 9.08579 0H8H3H1.5V1.5V13.5C1.5 14.8807 2.61929 16 4 16H12C13.3807 16 14.5 14.8807 14.5 13.5ZM13 13.5V6.5H9.5H8V5V1.5H3V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5ZM9.5 5V2.12132L12.3787 5H9.5ZM5.13 5.00062H4.505V6.25062H5.13H6H6.625V5.00062H6H5.13ZM4.505 8H5.13H11H11.625V9.25H11H5.13H4.505V8ZM5.13 11H4.505V12.25H5.13H11H11.625V11H11H5.13Z" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path></svg></div><div class="flex flex-col justify-between" data-node-hydration="55"><h2 class="dark:text-white"><!--node-id56-->Mobile<!--#--></h2><!--placeholder57--></div></a></li><li class="w-full rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out" data-node-hydration="58"><a href="/learn/0.5/reference/fullstack" class="flex flex-row items-center gap-x-2 p-2" data-node-hydration="59,click:1"><div class="style_itemPrefix__HSCJc" data-node-hydration="60"><svg data-testid="geist-icon" height="16" viewBox="0 0 16 16" width="16" stroke-linejoin="round" style="color: currentcolor;"><path d="M14.5 13.5V6.5V5.41421C14.5 5.149 14.3946 4.89464 14.2071 4.70711L9.79289 0.292893C9.60536 0.105357 9.351 0 9.08579 0H8H3H1.5V1.5V13.5C1.5 14.8807 2.61929 16 4 16H12C13.3807 16 14.5 14.8807 14.5 13.5ZM13 13.5V6.5H9.5H8V5V1.5H3V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5ZM9.5 5V2.12132L12.3787 5H9.5ZM5.13 5.00062H4.505V6.25062H5.13H6H6.625V5.00062H6H5.13ZM4.505 8H5.13H11H11.625V9.25H11H5.13H4.505V8ZM5.13 11H4.505V12.25H5.13H11H11.625V11H11H5.13Z" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path></svg></div><div class="flex flex-col justify-between" data-node-hydration="61"><h2 class="dark:text-white"><!--node-id62-->Fullstack<!--#--></h2><!--placeholder63--></div></a></li><li class="w-full rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out" data-node-hydration="64"><a href="/learn/0.5/router/reference" class="flex flex-row items-center gap-x-2 p-2" data-node-hydration="65,click:1"><div class="style_itemPrefix__HSCJc" data-node-hydration="66"><svg data-testid="geist-icon" height="16" viewBox="0 0 16 16" width="16" stroke-linejoin="round" style="color: currentcolor;"><path d="M14.5 13.5V6.5V5.41421C14.5 5.149 14.3946 4.89464 14.2071 4.70711L9.79289 0.292893C9.60536 0.105357 9.351 0 9.08579 0H8H3H1.5V1.5V13.5C1.5 14.8807 2.61929 16 4 16H12C13.3807 16 14.5 14.8807 14.5 13.5ZM13 13.5V6.5H9.5H8V5V1.5H3V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5ZM9.5 5V2.12132L12.3787 5H9.5ZM5.13 5.00062H4.505V6.25062H5.13H6H6.625V5.00062H6H5.13ZM4.505 8H5.13H11H11.625V9.25H11H5.13H4.505V8ZM5.13 11H4.505V12.25H5.13H11H11.625V11H11H5.13Z" fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path></svg></div><div class="flex flex-col justify-between" data-node-hydration="67"><h2 class="dark:text-white"><!--node-id68-->Typesafe Routing<!--#--></h2><!--placeholder69--></div></a></li></ul></div></div></div><header class="sticky top-0 z-30 bg-opacity-80 dark:text-gray-200 dark:bg-opacity-80 border-b dark:border-stone-700 h-16 backdrop-blur-sm" data-node-hydration="70"><div class="py-2 px-2 max-w-screen-2xl mx-auto flex items-center justify-between text-sm leading-6 h-16"><div class="flex z-50 md:px-2 flex-1"><nav class="flex-grow md:flex-grow-0 flex flex-row items-center  text-md font-light leading-none text-slate-700 dark:text-white whitespace-nowrap md:gap-6" data-node-hydration="71"><a href="/" class="title-font font-medium items-center text-gray-900 flex flex-row gap-1" data-node-hydration="72,click:1"><img src="/assets/smalllogo-612343f764e76d3e.png" class="h-6 w-auto" data-node-hydration="73"/><span class="text-xl dark:text-white leading-none hidden sm:block font-mono" data-node-hydration="74">DIOXUS</span></a><div class="flex-1 flex flex-row items-center md:space-x-6 justify-evenly"><a href="/learn/0.5/" class="leading-none hover:text-sky-500 dark:hover:text-sky-400 rounded fill-zinc-700 dark:fill-zinc-100" style="position:relative;" data-node-hydration="75,click:1"><!--node-id76-->Learn<!--#--></a><a href="/awesome" class="leading-none hover:text-sky-500 dark:hover:text-sky-400 rounded fill-zinc-700 dark:fill-zinc-100" style="position:relative;" data-node-hydration="77,click:1"><!--node-id78-->Awesome<!--#--></a><a href="/blog" class="leading-none hover:text-sky-500 dark:hover:text-sky-400 rounded fill-zinc-700 dark:fill-zinc-100" style="position:relative;" data-node-hydration="79,click:1"><!--node-id80-->Blog<!--#--></a></div></nav></div><div class="flex h-full justify-end ml-2 items-center gap-3 py-2"><button class="
+            max-w-[12rem] items-center rounded
+            p-1 text-left text-sm font-light leading-none border
 
-<p>Welcome back, get your snacks, Dioxus 0.4 just dropped.</p>
-<p>If you’re new here: Dioxus (dye•ox•us) is a library for building React-like user interface in Rust. Dioxus supports a ton of targets: web, desktop, mobile, TUI, and more.</p>
-<p>Dioxus 0.4 is adding support for the next frontier: the server backend.</p>
-<p>You can now write your entire fullstack web app in one file.</p>
-<p><img src="/static/04meme.png" alt="meme"></p>
-<p>The gist of this release:</p>
-<ul>
-<li>Server functions</li>
-<li>Server-compatible suspense</li>
-<li>Overhauled (and beautiful!) interactive documentation</li>
-<li>Overhauled and supercharged new router</li>
-<li>First-party support for Android with new getting started guides</li>
-<li>Backend-agnostic hooks for common app uses cases</li>
-<li>Desktop Hot Reloading</li>
-<li>Tauri-bundle built into the Dioxus CLI</li>
-<li>Polish, bug fixes, stability, testing, and more!</li>
-</ul>
-<h2 id="weekly-office-hours">Weekly Office Hours</h2>
-<p>Before we dive right into the bulk of this release, we want to make sure everyone knows that Dioxus Labs now has weekly office hours, every Friday at 9am PST.</p>
-<p>These are held on the community Discord - with an invite here:</p>
-<p><a href="https://discord.gg/XgGxMSkvUM">Join the Dioxus Labs Discord Server!</a></p>
-<p>In the office hours you can get help with your app, learn how to contribute, get feedback on code, and <a href="https://www.notion.so/Dioxus-Labs-Public-Roadmap-771939f47d13423abe2a2195b5617555?pvs=21">help shape the roadmap.</a> We hope to see you there!</p>
-<h2 id="server-functions">Server Functions</h2>
-<p>These days, every cool UI library has some sort of backend framework to do server stuff. This could be interacting with a database, uploading files, working with websockets, you name it. With Dioxus 0.4, we’re adding our first backend solution: Server Functions.</p>
-<p>Server Functions are functions annotated with the <code>server</code> procedural macro that generates an RPC client and server for your app. With a single function declaration, you get both the server endpoint <em>and</em> the client required to interact with the endpoint.</p>
-<p>For example, take this simple Server Function. We’re using the awesome <a href="https://github.com/trevyn/turbosql">turbosql</a> crate by <a href="https://github.com/trevyn">trevyn</a> to interact with a sqlite database to load a person’s username.</p>
-<pre><code class="lang-rust"><span class="hljs-meta">#[server]</span>
-async <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_username</span></span>() -&gt; <span class="hljs-built_in">Result</span>&lt;<span class="hljs-built_in">String</span>&gt; {
-    <span class="hljs-comment">// Using turbosql to extract some data from the DB</span>
-    <span class="hljs-literal">Ok</span>(<span class="hljs-built_in">select!</span>(<span class="hljs-built_in">String</span> <span class="hljs-string">"SELECT name FROM person"</span>)?)
-}
-</code></pre>
-<p>The <code>server</code> macro will generate a different helper function depending on the configuration flags of your project. If you build your project for the backend (<code>server</code>), then your endpoint will be automatically injected into any axum/salvo/warp router created with <code>dioxus_fullstack</code>. However, if you build your project with any other feature flag, like, <code>client</code>, then the macro generates the <em>call</em> to the server.</p>
-<p><img src="/static/split_codegen.png" alt="Server / Client code splitting"></p>
-<p>This approach makes it easy to incrementally add new backend functionality to your app. Of course, this has some disadvantages - the backend is rather tightly coupled to the frontend - but for most apps, Server Functions will be a huge productivity win.</p>
-<p>Server Functions are agnostic to the backend framework you’re using, and support a number of generic operations common across axum, warp, and salvo. For instance, you can extract any header from the request, guarding on things like valid headers and cookies:</p>
-<pre><code class="lang-rust"><span class="hljs-keyword">use</span> axum::{TypedHeader, headers::UserAgent};
-<span class="hljs-keyword">use</span> dioxus_fullstack::extract;
+            hidden md:flex flex-row
+            w-full sm:flex-1 md:w-full xl:max-w-[12rem]
 
-<span class="hljs-meta">#[server]</span>
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">log_user_agent</span></span>() -&gt; ServerFnResult {
-    <span class="hljs-keyword">let</span> user_agent: TypedHeader&lt;UserAgent&gt; = extract().await?;
-    <span class="hljs-literal">Ok</span>(())
-}
-</code></pre>
-<p>You can attach middleware either at the server level or individually on server functions. The new fullstack utilities work seamlessly with <a href="https://docs.rs/tower/latest/tower/index.html">Tower</a>, so any server function can be annotated with a middleware.</p>
-<pre><code class="lang-rust"><span class="hljs-comment">// Add a timeout middleware to the server function that will return</span>
-<span class="hljs-comment">// an error if the function takes longer than 1 second to execute</span>
-
-<span class="hljs-keyword">use</span> std::time::Duration;
-<span class="hljs-keyword">use</span> tower_http::timeout::TimeoutLayer;
-<span class="hljs-keyword">use</span> tokio::time::sleep;
-
-<span class="hljs-meta">#[server]</span>
-<span class="hljs-meta">#[middleware(TimeoutLayer::new(Duration::from_secs(1)))]</span>
-<span class="hljs-keyword">pub</span> async <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">timeout</span></span>() -&gt; ServerFnResult {
-        sleep(Duration::from_secs(<span class="hljs-number">2</span>)).await;
-    <span class="hljs-literal">Ok</span>(())
-}
-</code></pre>
-<p>Combining all these concepts together, you can quickly add features like Authentication to your fullstack app. We’ve put together a <a href="https://github.com/dioxuslabs/dioxus/blob/master/packages/fullstack/examples/axum-auth/src/main.rs">simple axum-auth example for you to get started</a>.</p>
-<p>Our goal with Server Functions is to lay the foundation for our final vision of Dioxus: a fullstack, crossplatform, fully typed, and lightning fast toolkit for building, deploying, monitoring, and scaling any app you can dream of. With one ecosystem, you can quickly build complete apps that run on desktop, mobile, web with a type-safe backend to boot.</p>
-<h2 id="suspense">Suspense</h2>
-<p>One feature that has been missing in Dioxus since its release is the ability to wait for futures to complete before generating the final server-side-rendered HTML. Before, the expectation was that you’d load any data <em>ahead of time,</em> and pass in the data via Root Props. We quickly learned this caused issues with scalability: you might not want to fetch every piece of props depending on the route.</p>
-<p><img src="/static/old_fetch.png" alt="Diagram of how SSR data used to be fetched"></p>
-<p>To solve this, we’re adding future-compatible <code>Suspense</code> - now integrated with Dioxus Fullstack and Server Functions.  Suspense is freely available to components via the <code>cx.suspend()</code> method. Calling <code>suspend</code> will tell Dioxus that this particular component is blocking the completion of the final render due to a pending future. The most basic usage of Suspense is pausing rendering until a data fetch has been completed:</p>
-<pre><code class="lang-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">Username</span></span>(cx: Scope) -&gt; Element {
-    <span class="hljs-keyword">let</span> username = use_future(cx, (), |_| get_username());
-
-    <span class="hljs-comment">// Try to extract the current value of the future</span>
-    <span class="hljs-keyword">let</span> <span class="hljs-literal">Some</span>(username) = username.value() <span class="hljs-keyword">else</span> {
-
-        <span class="hljs-comment">// Early return and mark this component as suspended</span>
-        <span class="hljs-keyword">return</span> cx.suspend();
-    }
-
-    render! { <span class="hljs-string">"Username: {username}"</span>)
-}
-</code></pre>
-<p>Now, we can do datafetching <em>inside</em> components, greatly simplifying our project structure. With the new <code>use_server_future</code> hook, we can persist the result of the fetch between server render and client render, allowing hydration to work seamlessly.</p>
-<pre><code class="lang-rust">
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">Dashboard</span></span>(cx: Scope) -&gt; Element {
-    <span class="hljs-comment">// use_server_future will persist the result of this call during SSR</span>
-    <span class="hljs-keyword">let</span> ip = use_server_future(cx, (), |_| get_server_ip())?;
-
-    render!{ <span class="hljs-string">"The edge node is {ip}"</span> }
-}
-
-<span class="hljs-comment">// When used on the server, this is just a simple function call</span>
-<span class="hljs-meta">#[server]</span>
-async <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_server_ip</span></span>() -&gt; <span class="hljs-built_in">Result</span>&lt;<span class="hljs-built_in">String</span>&gt; {
-    <span class="hljs-literal">Ok</span>(reqwest::get(<span class="hljs-string">"https://httpbin.org/ip"</span>).await?.text().await?)
-}
-</code></pre>
-<p>With inline datafetching, we can greatly simplify the amount of work required to build fullstack apps. In this diagram of a Dioxus app with suspense, we can see that suspended components are marked yellow. When their futures completed, Dioxus will continue rendering them, cascading into their children until all futures have been resolved.</p>
-<p><img src="/static/new_fetch.png" alt="Diagram of how SSR data is fetched now"></p>
-<p>Adopting suspense and fullstack should be easy. Now, when you go to render the app, you can simply call <code>wait_for_suspense()</code> before pre-rendering the markup:</p>
-<pre><code class="lang-rust"><span class="hljs-keyword">let</span> mut app = <span class="hljs-type">VirtualDom</span>::<span class="hljs-function"><span class="hljs-keyword">new</span>(app_fn);
-
-<span class="hljs-comment">// Start the futures</span>
-<span class="hljs-title">app</span>.<span class="hljs-title">rebuild</span>();
-
-<span class="hljs-comment">// Wait for suspended futures to complete</span>
-<span class="hljs-title">app</span>.<span class="hljs-title">wait_for_suspense</span>();
-
-<span class="hljs-comment">// Now render the app out</span>
-<span class="hljs-title">dioxus_ssr</span>::prerender(&amp;app);</span>
-</code></pre>
-<p>Note that this is not 100% equivalent to React’s suspense as it’s not currently possible to render loading states or error boundaries. These features are currently experimental and will be stabilized during the 0.4 release cycle.</p>
-<h2 id="enum-router">Enum Router</h2>
-<p>Since the initial release of Dioxus, we’ve had a very simple App Router, inspired by the older versions of React Router. Most UI toolkits these days provide a Router object that interacts with the browser’s router, and to date, Dioxus’ router has been pretty simple.</p>
-<p>In the beginning we opted for simplicity and flexibility. The old router let you create route trees with just components. This router was easy to add new routes to and easy to compose.</p>
-<pre><code class="lang-rust">pub fn app(cx: Scope) -&gt; Element {
-    render! {
-        Router {
-            Nav {}
-            Route { to: <span class="hljs-string">"/"</span>, Homepage {} }
-            Route { to: <span class="hljs-string">"/awesome"</span>, Awesome {}}
-            Route { to: <span class="hljs-string">"/learn"</span>, Learn {} }
-            Route { to: <span class="hljs-string">"/tutorials/:id"</span>, Tutorial {} }
-            Route { to: <span class="hljs-string">"/blog"</span>, BlogList {} }
-            Route { to: <span class="hljs-string">"/blog/going-fulltime"</span>, GoingFulltime {} }
-            Route { to: <span class="hljs-string">"/blog/release-030"</span>, Release03 {} }
-            Route { to: <span class="hljs-string">""</span>, Err404 {} }
-        }
-        Footer {}
-    }
-}
-</code></pre>
-<p>However, after thinking about the new features we wanted to add to Dioxus, we realized that this router design wouldn’t cut it in the future. We were lacking many crucial features like nested routes and type-safe URLs.</p>
-<p>So, we designed a new router built around the Rust <code>enum</code>. Now, you assemble your app’s route by deriving the <code>Routable</code> trait for a given enum. Routes are simply enum variants! Even better, everything is 100% typesafe. No longer can you craft invalid URLs - saving your apps from a whole host of problems.</p>
-<pre><code class="lang-rust"><span class="hljs-meta">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize, Debug)]</span>
-enum <span class="hljs-class">Route </span>{
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/"</span>)]</span>
-    <span class="hljs-meta">#[redirect(<span class="hljs-string">"/platforms"</span>, || Route::Homepage {})]</span>
-    <span class="hljs-class">Homepage </span>{},
-
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/awesome"</span>)]</span>
-    <span class="hljs-class">Awesome </span>{},
-
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/learn"</span>)]</span>
-    <span class="hljs-class">Learn </span>{},
-
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/tutorials/:id"</span>)]</span>
-    <span class="hljs-class">Tutorial </span>{ id: usize },
-
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/blog"</span>)]</span>
-    <span class="hljs-class">BlogList </span>{},
-
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/blog/:post"</span>)]</span>
-    <span class="hljs-class">BlogPost </span>{ post: String },
-
-    <span class="hljs-meta">#[route(<span class="hljs-string">"/:..segments"</span>)]</span>
-  <span class="hljs-class">Err404 </span>{ segments: Vec<span class="hljs-params">&lt;String&gt;</span> },
-}
-</code></pre>
-<p>To render the new router, pass in your app’s Route enum as the generic type in the Router, and Dioxus will render the right component, given that the enum variant.</p>
-<pre><code class="lang-rust"><span class="hljs-keyword">fn</span> app(<span class="hljs-symbol">cx:</span> Scope) -&gt; Element {
-    render! { <span class="hljs-symbol">Router:</span><span class="hljs-symbol">:&lt;Route&gt;</span> {} }
-}
-</code></pre>
-<p>The <code>#[derive(Routable)]</code> will automatically generate the <code>render</code> function for your Router. The Router will render the right route given that a similarly named component is in scope. You can override this yourself, or just stick with the default. The simplest app using the new router would look something like this:</p>
-<pre><code class="lang-rust">
-<span class="hljs-comment">// 1. Declare our app's routes</span>
-<span class="hljs-meta">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]</span>
-<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Route</span></span> {
-    <span class="hljs-meta">#[route(<span class="hljs-meta-string">"/"</span>)]</span>
-    Homepage {},
-}
-
-<span class="hljs-comment">// 2. Make sure we have a component in scope that matches the enum variant</span>
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">Homepage</span></span>(cx: Scope) -&gt; Element {
-    render! { <span class="hljs-string">"Welcome home!"</span> }
-}
-
-<span class="hljs-comment">// 3. Now render our app, using the Router and Route</span>
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">app</span></span>(cx: Scope) -&gt; Element {
-    render! { Router::&lt;Route&gt; {} }
-}
-</code></pre>
-<p>Passing in attributes from the route itself is easy too. The <code>Routable</code> macro will accept any fields that implement <code>FromStr</code>, so you can easily add attributes, queries, and named parameters to your app.</p>
-<pre><code class="lang-rust"><span class="hljs-comment">// Declare our app's routes</span>
-<span class="hljs-meta">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]</span>
-<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Route</span></span> {
-    <span class="hljs-meta">#[route(<span class="hljs-meta-string">"/blog/:post"</span>)]</span>
-    BlogPost { post: <span class="hljs-built_in">String</span> },
-}
-
-<span class="hljs-meta">#[component]</span>
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">BlogPost</span></span>(cx: Scope, post: <span class="hljs-built_in">String</span>) {
-    render!{ <span class="hljs-string">"Currently viewing: {post}"</span> }
-}
-</code></pre>
-<p>Likewise, you can catch 404s using the trailing segments syntax.</p>
-<pre><code class="lang-rust"><span class="hljs-comment">// Declare our app's routes</span>
-<span class="hljs-meta">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]</span>
-<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Route</span></span> {
-    <span class="hljs-meta">#[route(<span class="hljs-meta-string">"/:..segments"</span>)]</span>
-  Err404 { segments: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">String</span>&gt; },
-}
-</code></pre>
-<p>Another exciting feature is layouts. We’re borrowing this concept from popular frameworks like Remix and Next.JS. Layouts make it easy to wrap Route components together in a shared set of components. A common use case is wrapping your app in a Header, Footer, or Navbar. Without layouts, you’d have a lot of code duplication</p>
-<pre><code class="lang-rust">fn Home(cx: Scope) -&gt; Element {
-    render! {
-        Header {}
-        Navbar {}
-        div { <span class="hljs-string">"actual home content"</span> }
-        Footer {}
-    }
-}
-
-fn Blog(cx: Scope) -&gt; Element {
-    render! {
-        Header {}
-        Navbar {}
-        div { <span class="hljs-string">"actual blog content"</span> }
-        Footer {}
-    }
-}
-</code></pre>
-<p>Now, with layouts, you can declare your layout in the Route enum itself.</p>
-<pre><code class="lang-rust"><span class="hljs-meta">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]</span>
-enum <span class="hljs-class">Route </span>{
-  <span class="hljs-meta">#[layout(HeaderFooterNav)]</span>
-        <span class="hljs-meta">#[route(<span class="hljs-string">"/"</span>)]</span>
-        <span class="hljs-class">Home </span>{},
-
-        <span class="hljs-meta">#[route(<span class="hljs-string">"/blog/"</span>)]</span>
-        <span class="hljs-class">Blog </span>{},
-}
-
-<span class="hljs-comment">// Wrap the rendered content of the Router with a header, navbar, and footer</span>
-fn HeaderFooterNav(cx: Scope) -&gt; <span class="hljs-class">Element </span>{
-    render! {
-        <span class="hljs-class">Header </span>{}
-        <span class="hljs-class">Navbar </span>{}
-<span class="hljs-symbol">        Outlet:</span>:<span class="hljs-params">&lt;Route&gt;</span> {}
-        <span class="hljs-class">Footer </span>{}
-    }
-}
-</code></pre>
-<p>The new router was an absolutely massive amount of work, spearheaded by @TeFiLeDo, improved by @demonthos, and made possible thanks to community members like @stephenandary and @attilio-oliva.</p>
-<p><img src="/static/enum_router.png" alt="PR of enum router"></p>
-<h2 id="new-and-beautiful-interactive-docs">New and beautiful interactive docs</h2>
-<p>It’s about time we revamped our documentation. When we launched, the original docs were pretty good, at least for a 0.1 crate. Now, we have over 16 crates in the main repo with another half dozen scattered around the github organization. New users deserve a better introduction experience.</p>
-<p>To start, we revamped our landing page. Short, sweet, to the point.</p>
-<p><img src="/static/landing_1.png" alt="Screenshot of new doc site landing page"></p>
-<p>At the top of the page, you’ll see a new search bar. You can search for anything in our docs with just a <code>ctrl+/</code> .  This new search functionality uses a <a href="https://github.com/dioxusLabs/dioxus-search">new search crate we designed and built</a>. <code>Dioxus-search</code> is fully crossplatform and ready to use in your next Dioxus app.</p>
-<p><img src="/static/landing_2.png" alt="Screenshot of new doc site search"></p>
-<p>Selecting any of the search results will take you straight to the docs page without bouncing out to an external mdbook.</p>
-<p><img src="/static/landing_3.png" alt="Screenshot of new doc site mdbook"></p>
-<p>We’ve added a bunch more content to the docs, including new pages like:</p>
-<ul>
-<li>Building a hackernews clone from scratch</li>
-<li>Setup guides for mobile</li>
-<li>Suggestions for useful crates</li>
-<li>How to bundle your app</li>
-<li>Working with server functions</li>
-</ul>
-<p>The best part? The docs are interactive! Examples like the <code>hello-world</code> and even the <code>hackernews</code> clone come to life from within the docs page.</p>
-<p><img src="/static/landing_4.png" alt="Screenshot of new doc site interactivity"></p>
-<p>We also moved the <code>awesome</code> dioxus page from GitHub to the docsite, so you can explore the various crates that other developers have submitted as “awesome.”</p>
-<p><img src="/static/landing_5.png" alt="Screenshot of new doc site awesome page"></p>
-<p>The new docs leverage many of the amazing new features from the router, including:</p>
-<ul>
-<li><a href="https://dioxuslabs.com/learn/0.4/router/reference/static-generation">Static Generation</a></li>
-<li><a href="https://docs.rs/dioxus-router/latest/dioxus_router/routable/trait.Routable.html#associatedconstant.SITE_MAP">Site Map generation</a></li>
-<li><a href="https://github.com/DioxusLabs/dioxus-search">Dioxus Search</a></li>
-<li><a href="https://github.com/DioxusLabs/include_mdbook">Dioxus include_md</a></li>
-<li><a href="https://dioxuslabs.com/learn/0.4/router/reference/layouts">Layouts</a></li>
-</ul>
-<h2 id="android-support-ios-fixes-getting-started-guide-for-mobile">Android Support, iOS fixes, Getting Started Guide for Mobile</h2>
-<p>To date, Dioxus has provided first-party support for mobile via iOS, but our Android support has been rather spotty and untested. In this release, we finally added iOS and Android testing to our suite of continuous integration. To round off mobile support, we’ve added a <a href="https://dioxuslabs.com/learn/0.4/getting_started/mobile">mobile-specific getting started guide</a> with a walkthrough on setting up platform-specific dependencies, handling basic cross-compilation, and booting up a mobile simulator. We’ve also fixed some bugs in upstream libraries like Tauri’s Tao which gives Dioxus its window-creation capabilities.</p>
-<p>iOS Demo:</p>
-<p><img src="/static/ios_demo.png" alt="Screenshot of xcode with dioxus app"></p>
-<p>Android Demo:</p>
-<p><img src="/static/android_demo.png" alt="Screenshot of android studio with dioxus app"></p>
-<h2 id="window-close-behavior">Window-Close Behavior</h2>
-<p>Another great contribution from the community: Dioxus desktop now provides functionality for managing the “close” behavior of windows in your app. We support three modes now:</p>
-<ul>
-<li>Closing the last window kills the app</li>
-<li>Closing the last window doesn’t kill the app</li>
-<li>Closing the last window simply hides the window (so the window can be cmd-tabbed back)</li>
-</ul>
-<p><video controls autoplay muted src="https://i.imgur.com/m4wJ6gN.mp4" alt="window_close.mov"></p>
-<h2 id="bidirectional-eval">Bidirectional Eval</h2>
-<p>The use_eval hook allows you to run snippets of Javascript in your Dioxus application when needed. @doge has made some improvements that make this hook has significantly more powerful. The new version of the hook is compatible between the desktop, web, and Liveview renderers. It also allows you to send messages to and from Javascript asynchronously. This makes it possible to listen for Javascript events that Dioxus doesn’t officially support like the intersection observer API.</p>
-<pre><code class="lang-rust"><span class="hljs-keyword">use</span> dioxus::prelude::*;
-
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
-    dioxus_desktop::launch(app);
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">app</span></span>(cx: Scope) -&gt; Element {
-    <span class="hljs-keyword">let</span> eval = use_eval(cx);
-
-    <span class="hljs-keyword">let</span> future = use_future(cx, (), |_| {
-        to_owned![eval];
-        async <span class="hljs-keyword">move</span> {
-            <span class="hljs-comment">// Eval some javascript</span>
-            <span class="hljs-keyword">let</span> eval = eval(
-                r#<span class="hljs-string">"dioxus.send("</span>Hi from JS!<span class="hljs-string">");
-                let msg = await dioxus.recv();
-                console.log(msg);
-                return "</span>hello world<span class="hljs-string">";"</span>#,
-            )
-            .unwrap();
-
-            <span class="hljs-comment">// Send messages into the running javascript</span>
-            eval.send(<span class="hljs-string">"Hi from Rust!"</span>.into()).unwrap();
-
-            <span class="hljs-comment">// Receive messages from the javascript</span>
-            <span class="hljs-keyword">let</span> res = eval.recv().await.unwrap();
-
-            <span class="hljs-comment">// Wait for it to complete</span>
-            <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, eval.await);
-
-            res
-        }
-    });
-
-    render!{ <span class="hljs-string">"{future.value():?}"</span> }
-}
-</code></pre>
-<h2 id="new-onmount-event">New onmount event</h2>
-<p>This release also introduces a new onmounted event that provides access to elements after they are created in a cross platform way. The onmounted event makes it possible to:</p>
-<ul>
-<li>Scroll to an element</li>
-<li>Read the size of an element</li>
-<li>Focus an element</li>
-<li>Get the platform specific element</li>
-</ul>
-<pre><code class="lang-rust"><span class="hljs-keyword">use</span> dioxus::prelude::*;
-
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
-    dioxus_desktop::launch(app);
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">app</span></span>(cx: Scope) -&gt; Element {
-    <span class="hljs-keyword">let</span> header_element = use_state(cx, || <span class="hljs-literal">None</span>);
-
-    cx.render(rsx!(
-        div {
-            h1 {
-                onmounted: <span class="hljs-keyword">move</span> |cx| {
-                    header_element.set(<span class="hljs-literal">Some</span>(cx.inner().clone()));
-                },
-                <span class="hljs-string">"Scroll to top example"</span>
-            }
-
-            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">40</span> {
-                div { <span class="hljs-string">"Item {i}"</span> }
-            }
-
-            button {
-                onclick: <span class="hljs-keyword">move</span> |_| {
-                    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-literal">Some</span>(header) = header_element.as_ref() {
-                        header.scroll_to(ScrollBehavior::Smooth);
+            bg-gray-100 text-gray-400 hover:brightness-95
+            dark:bg-ghdarkmetal dark:text-gray-300 dark:border-gray-700 h-full
+            " data-node-hydration="81,click:1"><span class="h-4 px-1 dark:hidden"><span class="material-icons material-icons-outlined material-icons-round material-icons-sharp material-icons-two-tone md-48" style="font-size: 16px; color: rgba(0, 0, 0, 0.54); user-select: none;" data-node-hydration="82"><!--node-id83-->search<!--#--></span></span><span class="h-4 px-1 hidden dark:block"><span class="material-icons material-icons-outlined material-icons-round material-icons-sharp material-icons-two-tone md-48" style="font-size: 16px; color: rgba(255, 255, 255, 1); user-select: none;" data-node-hydration="84"><!--node-id85-->search<!--#--></span></span><span class="hidden content-center text-sm sm:flex flex-row w-60 justify-between"><span>Search...</span><span class="px-1 min-w-6
+                border bg-gray-100 border-gray-300 rounded text-center text-base/[18px] text-[.75rem] align-middle
+                dark:bg-ghdarkmetal dark:border-gray-700
+                ">/</span></span></button><div tabindex="0" role="button" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-500 md:hidden rounded-lg p-1 mr-2 my-3 h-8 flex items-center text-lg z-50 hidden" style="cursor:pointer;" data-node-hydration="86,click:1"><span class="material-icons material-icons-outlined material-icons-round material-icons-sharp material-icons-two-tone md-48" style="font-size: 24px; color: rgba(0, 0, 0, 0.54); user-select: none;" data-node-hydration="87"><!--node-id88-->menu<!--#--></span></div><div class="h-full  gap-3 hidden lg:flex"><div class="border-l border-gray-200 dark:border-gray-800 h-full"></div><div class="hidden lg:flex items-center gap-3"><label class="sr-only" id="headlessui-listbox-label-2">Theme</label><a href="https://crates.io/crates/dioxus" class="block text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" rel="noopener noreferrer" target="_blank" data-node-hydration="89,click:1"><span class="sr-only" data-node-hydration="90">Dioxus on docs.rs</span><svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" width="24" height="24" data-node-hydration="91"><path d="M290.8 48.6l78.4 29.7L288 109.5 206.8 78.3l78.4-29.7c1.8-.7 3.8-.7 5.7 0zM136 92.5l0 112.2c-1.3 .4-2.6 .8-3.9 1.3l-96 36.4C14.4 250.6 0 271.5 0 294.7L0 413.9c0 22.2 13.1 42.3 33.5 51.3l96 42.2c14.4 6.3 30.7 6.3 45.1 0L288 457.5l113.5 49.9c14.4 6.3 30.7 6.3 45.1 0l96-42.2c20.3-8.9 33.5-29.1 33.5-51.3l0-119.1c0-23.3-14.4-44.1-36.1-52.4l-96-36.4c-1.3-.5-2.6-.9-3.9-1.3l0-112.2c0-23.3-14.4-44.1-36.1-52.4l-96-36.4c-12.8-4.8-26.9-4.8-39.7 0l-96 36.4C150.4 48.4 136 69.3 136 92.5zM392 210.6l-82.4 31.2 0-89.2L392 121l0 89.6zM154.8 250.9l78.4 29.7L152 311.7 70.8 280.6l78.4-29.7c1.8-.7 3.8-.7 5.7 0zm18.8 204.4l0-100.5L256 323.2l0 95.9-82.4 36.2zM421.2 250.9c1.8-.7 3.8-.7 5.7 0l78.4 29.7L424 311.7l-81.2-31.1 78.4-29.7zM523.2 421.2l-77.6 34.1 0-100.5L528 323.2l0 90.7c0 3.2-1.9 6-4.8 7.3z" fill="currentColor" fill-rule="nonzero"></path></svg></a><a href="https://discord.gg/XgGxMSkvUM" class="block text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" rel="noopener noreferrer" target="_blank" data-node-hydration="92,click:1"><span class="sr-only" data-node-hydration="93">Dioxus on Discord</span><svg width="24" height="24" viewBox="0 -28.5 256 256" preserveAspectRatio="xMidYMid" data-node-hydration="94"><g><path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="currentColor" fill-rule="nonzero"></path></g></svg></a><a href="https://github.com/dioxuslabs/dioxus" class="flex flex-row items-center text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 gap-2" rel="noopener noreferrer" target="_blank" data-node-hydration="95,click:1"><span class="sr-only" data-node-hydration="96">Dioxus on GitHub</span><svg class="w-5 h-5" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" data-node-hydration="97"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="text-xs text" data-node-hydration="98">21.1k</span></a></div><div class="border-l border-gray-200 dark:border-gray-800 h-full"></div><div class="hidden lg:flex items-center gap-2 h-full"><label class="sr-only" id="headlessui-listbox-label-2">Theme</label><a href="/deploy" class="h-full flex flex-col justify-center text-center md:px-3 bg-white dark:bg-gray-300 border border-gray-200 dark:border-gray-700 text-sm md:text-sm rounded font-semibold text-gray-700 hover:brightness-95 dark:hover:brightness-105" data-node-hydration="99,click:1"><!--node-id100-->Deploy<!--#--></a><a href="/learn/0.5/" class="md:px-3 h-full flex flex-col justify-center bg-blue-500 text-lg md:text-sm text-white rounded font-semibold hover:brightness-95 dark:hover:brightness-105" data-node-hydration="101,click:1"><!--node-id102-->Learn<!--#--></a></div></div></div></div></header><div><section class="text-gray-600 body-font max-w-screen-md mx-auto pt-24 font-light" data-node-hydration="103"><div class="markdown-body px-2  dioxus-blog-post"><h1 id="dioxus-04-server-functions-suspense-enum-router-overhauled-docs-bundler-android-support-and-more" data-node-hydration="104"><a href="#dioxus-04-server-functions-suspense-enum-router-overhauled-docs-bundler-android-support-and-more" class="header">Dioxus 0.4: Server Functions, Suspense, Enum Router, Overhauled Docs, Bundler, Android Support, and more</a></h1><blockquote data-node-hydration="105"><p>Aug 1, 2023</p></blockquote><blockquote data-node-hydration="106"><p><a href="https://github.com/jkelleyrtp">@jkelleyrtp</a>, <a href="https://github.com/ealmloff">@ealmloff</a>Thanks to <a href="https://github.com/tefiledo">@tefiledo</a> <a href="https://github.com/marc2332">@marc2332</a>  <a href="https://github.com/DogeDark">@DogeDark</a></p></blockquote><p data-node-hydration="107">Welcome back, get your snacks, Dioxus 0.4 just dropped.</p><p data-node-hydration="108">If you’re new here: Dioxus (dye•ox•us) is a library for building React-like user interface in Rust. Dioxus supports a ton of targets: web, desktop, mobile, TUI, and more.</p><p data-node-hydration="109">Dioxus 0.4 is adding support for the next frontier: the server backend.</p><p data-node-hydration="110">You can now write your entire fullstack web app in one file.</p><p data-node-hydration="111"><img src="/assets/static/04meme.png" alt="meme" title=""/></p><p data-node-hydration="112">The gist of this release:</p><ul data-node-hydration="113"><li>Server functions</li><li>Server-compatible suspense</li><li>Overhauled (and beautiful!) interactive documentation</li><li>Overhauled and supercharged new router</li><li>First-party support for Android with new getting started guides</li><li>Backend-agnostic hooks for common app uses cases</li><li>Desktop Hot Reloading</li><li>Tauri-bundle built into the Dioxus CLI</li><li>Polish, bug fixes, stability, testing, and more!</li></ul><h2 id="weekly-office-hours" data-node-hydration="114"><a href="#weekly-office-hours" class="header">Weekly Office Hours</a></h2><p data-node-hydration="115">Before we dive right into the bulk of this release, we want to make sure everyone knows that Dioxus Labs now has weekly office hours, every Friday at 9am PST.</p><p data-node-hydration="116">These are held on the community Discord - with an invite here:</p><p data-node-hydration="117"><a href="https://discord.gg/XgGxMSkvUM">Join the Dioxus Labs Discord Server!</a></p><p data-node-hydration="118">In the office hours you can get help with your app, learn how to contribute, get feedback on code, and <a href="https://www.notion.so/Dioxus-Labs-Public-Roadmap-771939f47d13423abe2a2195b5617555?pvs=21">help shape the roadmap.</a> We hope to see you there!</p><h2 id="server-functions" data-node-hydration="119"><a href="#server-functions" class="header">Server Functions</a></h2><p data-node-hydration="120">These days, every cool UI library has some sort of backend framework to do server stuff. This could be interacting with a database, uploading files, working with websockets, you name it. With Dioxus 0.4, we’re adding our first backend solution: Server Functions.</p><p data-node-hydration="121">Server Functions are functions annotated with the  <code>server</code> procedural macro that generates an RPC client and server for your app. With a single function declaration, you get both the server endpoint <em>and</em> the client required to interact with the endpoint.</p><p data-node-hydration="122">For example, take this simple Server Function. We’re using the awesome <a href="https://github.com/trevyn/turbosql">turbosql</a> crate by <a href="https://github.com/trevyn">trevyn</a> to interact with a sqlite database to load a person’s username.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="123"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder124--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="125,click:1"><!--placeholder126--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="127"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="128"><pre style="background-color:#0d0d0d;">
+<span style="color:#f8f8f2;">#[server]
+</span><span style="color:#f8f8f2;">async </span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">get_username</span><span style="color:#f8f8f2;">() -&gt; Result&lt;String&gt; {
+</span><span style="color:#f8f8f2;">	</span><span style="color:#8c8c8c;">// Using turbosql to extract some data from the DB
+</span><span style="color:#f8f8f2;">	</span><span style="font-style:italic;color:#66d9ef;">Ok</span><span style="color:#f8f8f2;">(select!(</span><span style="font-style:italic;color:#66d9ef;">String </span><span style="color:#ffee99;">&quot;SELECT name FROM person&quot;</span><span style="color:#f8f8f2;">)</span><span style="color:#f92672;">?</span><span style="color:#f8f8f2;">)
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="129">The  <code>server</code> macro will generate a different helper function depending on the configuration flags of your project. If you build your project for the backend ( <code>server</code>), then your endpoint will be automatically injected into any axum/salvo/warp router created with  <code>dioxus_fullstack</code>. However, if you build your project with any other feature flag, like,  <code>client</code>, then the macro generates the <em>call</em> to the server.</p><p data-node-hydration="130"><img src="/assets/static/split_codegen.png" alt="Server / Client code splitting" title=""/></p><p data-node-hydration="131">This approach makes it easy to incrementally add new backend functionality to your app. Of course, this has some disadvantages - the backend is rather tightly coupled to the frontend - but for most apps, Server Functions will be a huge productivity win.</p><p data-node-hydration="132">Server Functions are agnostic to the backend framework you’re using, and support a number of generic operations common across axum, warp, and salvo. For instance, you can extract any header from the request, guarding on things like valid headers and cookies:</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="133"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder134--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="135,click:1"><!--placeholder136--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="137"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="138"><pre style="background-color:#0d0d0d;">
+<span style="color:#f92672;">use </span><span style="color:#f8f8f2;">axum::{TypedHeader, headers::UserAgent};
+</span><span style="color:#f92672;">use </span><span style="color:#f8f8f2;">dioxus_fullstack::extract;
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">#[server]
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">log_user_agent</span><span style="color:#f8f8f2;">() -&gt; ServerFnResult {
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> user_agent: TypedHeader&lt;UserAgent&gt; </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">extract</span><span style="color:#f8f8f2;">().await</span><span style="color:#f92672;">?</span><span style="color:#f8f8f2;">;
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">Ok</span><span style="color:#f8f8f2;">(())
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="139">You can attach middleware either at the server level or individually on server functions. The new fullstack utilities work seamlessly with <a href="https://docs.rs/tower/latest/tower/index.html">Tower</a>, so any server function can be annotated with a middleware.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="140"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder141--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="142,click:1"><!--placeholder143--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="144"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="145"><pre style="background-color:#0d0d0d;">
+<span style="color:#8c8c8c;">// Add a timeout middleware to the server function that will return
+</span><span style="color:#8c8c8c;">// an error if the function takes longer than 1 second to execute
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f92672;">use </span><span style="color:#f8f8f2;">std::time::Duration;
+</span><span style="color:#f92672;">use </span><span style="color:#f8f8f2;">tower_http::timeout::TimeoutLayer;
+</span><span style="color:#f92672;">use </span><span style="color:#f8f8f2;">tokio::time::sleep;
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">#[server]
+</span><span style="color:#f8f8f2;">#[middleware(TimeoutLayer::new(Duration::from_secs(1)))]
+</span><span style="color:#f92672;">pub</span><span style="color:#f8f8f2;"> async </span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">timeout</span><span style="color:#f8f8f2;">() -&gt; ServerFnResult {
+</span><span style="color:#f8f8f2;">		</span><span style="color:#66d9ef;">sleep</span><span style="color:#f8f8f2;">(Duration::from_secs(</span><span style="color:#ff80f4;">2</span><span style="color:#f8f8f2;">)).await;
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">Ok</span><span style="color:#f8f8f2;">(())
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="146">Combining all these concepts together, you can quickly add features like Authentication to your fullstack app. We’ve put together a <a href="https://github.com/dioxuslabs/dioxus/blob/main/packages/fullstack/examples/axum-auth/src/main.rs">simple axum-auth example for you to get started</a>.</p><p data-node-hydration="147">Our goal with Server Functions is to lay the foundation for our final vision of Dioxus: a fullstack, crossplatform, fully typed, and lightning fast toolkit for building, deploying, monitoring, and scaling any app you can dream of. With one ecosystem, you can quickly build complete apps that run on desktop, mobile, web with a type-safe backend to boot.</p><h2 id="suspense" data-node-hydration="148"><a href="#suspense" class="header">Suspense</a></h2><p data-node-hydration="149">One feature that has been missing in Dioxus since its release is the ability to wait for futures to complete before generating the final server-side-rendered HTML. Before, the expectation was that you’d load any data <em>ahead of time,</em> and pass in the data via Root Props. We quickly learned this caused issues with scalability: you might not want to fetch every piece of props depending on the route.</p><p data-node-hydration="150"><img src="/assets/static/old_fetch.png" alt="Diagram of how SSR data used to be fetched" title=""/></p><p data-node-hydration="151">To solve this, we’re adding future-compatible  <code>Suspense</code> - now integrated with Dioxus Fullstack and Server Functions.  Suspense is freely available to components via the  <code>cx.suspend()</code> method. Calling  <code>suspend</code> will tell Dioxus that this particular component is blocking the completion of the final render due to a pending future. The most basic usage of Suspense is pausing rendering until a data fetch has been completed:</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="152"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder153--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="154,click:1"><!--placeholder155--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="156"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="157"><pre style="background-color:#0d0d0d;">
+<span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">Username</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	</span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> username </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">use_future</span><span style="color:#f8f8f2;">(cx, (), |_| </span><span style="color:#66d9ef;">get_username</span><span style="color:#f8f8f2;">());
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	</span><span style="color:#8c8c8c;">// Try to extract the current value of the future
+</span><span style="color:#f8f8f2;">	</span><span style="font-style:italic;color:#66d9ef;">let Some</span><span style="color:#f8f8f2;">(username) </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> username.</span><span style="color:#66d9ef;">value</span><span style="color:#f8f8f2;">() </span><span style="color:#f92672;">else </span><span style="color:#f8f8f2;">{
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">		</span><span style="color:#8c8c8c;">// Early return and mark this component as suspended
+</span><span style="color:#f8f8f2;">		</span><span style="color:#f92672;">return</span><span style="color:#f8f8f2;"> cx.</span><span style="color:#66d9ef;">suspend</span><span style="color:#f8f8f2;">();
+</span><span style="color:#f8f8f2;">	}
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	render! { </span><span style="color:#ffee99;">&quot;Username: {username}&quot;</span><span style="color:#f8f8f2;">)
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="158">Now, we can do datafetching <em>inside</em> components, greatly simplifying our project structure. With the new <code>use_server_future</code> hook, we can persist the result of the fetch between server render and client render, allowing hydration to work seamlessly.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="159"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder160--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="161,click:1"><!--placeholder162--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="163"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="164"><pre style="background-color:#0d0d0d;">
+<span style="color:#f8f8f2;">
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">Dashboard</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">    </span><span style="color:#8c8c8c;">// use_server_future will persist the result of this call during SSR
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> ip </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">use_server_future</span><span style="color:#f8f8f2;">(cx, (), |_| </span><span style="color:#66d9ef;">get_server_ip</span><span style="color:#f8f8f2;">())</span><span style="color:#f92672;">?</span><span style="color:#f8f8f2;">;
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">    render!{ </span><span style="color:#ffee99;">&quot;The edge node is {ip}&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// When used on the server, this is just a simple function call
+</span><span style="color:#f8f8f2;">#[server]
+</span><span style="color:#f8f8f2;">async </span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">get_server_ip</span><span style="color:#f8f8f2;">() -&gt; Result&lt;String&gt; {
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">Ok</span><span style="color:#f8f8f2;">(reqwest::get(</span><span style="color:#ffee99;">&quot;https://httpbin.org/ip&quot;</span><span style="color:#f8f8f2;">).await</span><span style="color:#f92672;">?</span><span style="color:#f8f8f2;">.</span><span style="color:#66d9ef;">text</span><span style="color:#f8f8f2;">().await</span><span style="color:#f92672;">?</span><span style="color:#f8f8f2;">)
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="165">With inline datafetching, we can greatly simplify the amount of work required to build fullstack apps. In this diagram of a Dioxus app with suspense, we can see that suspended components are marked yellow. When their futures completed, Dioxus will continue rendering them, cascading into their children until all futures have been resolved.</p><p data-node-hydration="166"><img src="/assets/static/new_fetch.png" alt="Diagram of how SSR data is fetched now" title=""/></p><p data-node-hydration="167">Adopting suspense and fullstack should be easy. Now, when you go to render the app, you can simply call  <code>wait_for_suspense()</code> before pre-rendering the markup:</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="168"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder169--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="170,click:1"><!--placeholder171--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="172"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="173"><pre style="background-color:#0d0d0d;">
+<span style="font-style:italic;color:#66d9ef;">let </span><span style="color:#f92672;">mut</span><span style="color:#f8f8f2;"> app </span><span style="color:#f92672;">= </span><span style="color:#f8f8f2;">VirtualDom::new(app_fn);
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// Start the futures
+</span><span style="color:#f8f8f2;">app.</span><span style="color:#66d9ef;">rebuild</span><span style="color:#f8f8f2;">();
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// Wait for suspended futures to complete
+</span><span style="color:#f8f8f2;">app.</span><span style="color:#66d9ef;">wait_for_suspense</span><span style="color:#f8f8f2;">();
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// Now render the app out
+</span><span style="color:#f8f8f2;">dioxus_ssr::prerender(</span><span style="color:#f92672;">&amp;</span><span style="color:#f8f8f2;">app);</span></pre>
+</div></div><p data-node-hydration="174">Note that this is not 100% equivalent to React’s suspense as it’s not currently possible to render loading states or error boundaries. These features are currently experimental and will be stabilized during the 0.4 release cycle.</p><h2 id="enum-router" data-node-hydration="175"><a href="#enum-router" class="header">Enum Router</a></h2><p data-node-hydration="176">Since the initial release of Dioxus, we’ve had a very simple App Router, inspired by the older versions of React Router. Most UI toolkits these days provide a Router object that interacts with the browser’s router, and to date, Dioxus’ router has been pretty simple.</p><p data-node-hydration="177">In the beginning we opted for simplicity and flexibility. The old router let you create route trees with just components. This router was easy to add new routes to and easy to compose.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="178"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder179--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="180,click:1"><!--placeholder181--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="182"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="183"><pre style="background-color:#0d0d0d;">
+</pre>
+</div></div><p data-node-hydration="184">However, after thinking about the new features we wanted to add to Dioxus, we realized that this router design wouldn’t cut it in the future. We were lacking many crucial features like nested routes and type-safe URLs.</p><p data-node-hydration="185">So, we designed a new router built around the Rust  <code>enum</code>. Now, you assemble your app’s route by deriving the  <code>Routable</code> trait for a given enum. Routes are simply enum variants! Even better, everything is 100% typesafe. No longer can you craft invalid URLs - saving your apps from a whole host of problems.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="186"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder187--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="188,click:1"><!--placeholder189--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="190"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="191"><pre style="background-color:#0d0d0d;">
+<span style="color:#f8f8f2;">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize, Debug)]
+</span><span style="font-style:italic;color:#66d9ef;">enum </span><span style="color:#f8f8f2;">Route {
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	#[redirect(</span><span style="color:#ffee99;">&quot;/platforms&quot;</span><span style="color:#f8f8f2;">, || Route::Homepage {})]
+</span><span style="color:#f8f8f2;">	Homepage {},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/awesome&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	Awesome {},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/learn&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	Learn {},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/tutorials/:id&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	Tutorial { id: </span><span style="font-style:italic;color:#66d9ef;">usize </span><span style="color:#f8f8f2;">},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/blog&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	BlogList {},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/blog/:post&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	BlogPost { post: </span><span style="font-style:italic;color:#66d9ef;">String </span><span style="color:#f8f8f2;">},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/:..segments&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">  Err404 { segments: Vec&lt;String&gt; },
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="192">To render the new router, pass in your app’s Route enum as the generic type in the Router, and Dioxus will render the right component, given that the enum variant.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="193"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder194--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="195,click:1"><!--placeholder196--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="197"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="198"><pre style="background-color:#0d0d0d;">
+<span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">app</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	render! { Router::&lt;Route&gt; {} }
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="199">The  <code>#[derive(Routable)]</code> will automatically generate the  <code>render</code> function for your Router. The Router will render the right route given that a similarly named component is in scope. You can override this yourself, or just stick with the default. The simplest app using the new router would look something like this:</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="200"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder201--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="202,click:1"><!--placeholder203--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="204"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="205"><pre style="background-color:#0d0d0d;">
+<span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// 1. Declare our app&#39;s routes
+</span><span style="color:#f8f8f2;">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]
+</span><span style="font-style:italic;color:#66d9ef;">enum </span><span style="color:#f8f8f2;">Route {
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	Homepage {},
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// 2. Make sure we have a component in scope that matches the enum variant
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">Homepage</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	render! { </span><span style="color:#ffee99;">&quot;Welcome home!&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// 3. Now render our app, using the Router and Route
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">app</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	render! { Router::&lt;Route&gt; {} }
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="206">Passing in attributes from the route itself is easy too. The  <code>Routable</code> macro will accept any fields that implement  <code>FromStr</code>, so you can easily add attributes, queries, and named parameters to your app.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="207"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder208--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="209,click:1"><!--placeholder210--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="211"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="212"><pre style="background-color:#0d0d0d;">
+<span style="color:#8c8c8c;">// Declare our app&#39;s routes
+</span><span style="color:#f8f8f2;">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]
+</span><span style="font-style:italic;color:#66d9ef;">enum </span><span style="color:#f8f8f2;">Route {
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/blog/:post&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">	BlogPost { post: </span><span style="font-style:italic;color:#66d9ef;">String </span><span style="color:#f8f8f2;">},
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">#[component]
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">BlogPost</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope, </span><span style="font-style:italic;color:#fd971f;">post</span><span style="color:#f8f8f2;">: String) {
+</span><span style="color:#f8f8f2;">	render!{ </span><span style="color:#ffee99;">&quot;Currently viewing: {post}&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="213">Likewise, you can catch 404s using the trailing segments syntax.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="214"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder215--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="216,click:1"><!--placeholder217--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="218"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="219"><pre style="background-color:#0d0d0d;">
+<span style="color:#8c8c8c;">// Declare our app&#39;s routes
+</span><span style="color:#f8f8f2;">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]
+</span><span style="font-style:italic;color:#66d9ef;">enum </span><span style="color:#f8f8f2;">Route {
+</span><span style="color:#f8f8f2;">	#[route(</span><span style="color:#ffee99;">&quot;/:..segments&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">  Err404 { segments: Vec&lt;String&gt; },
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="220">Another exciting feature is layouts. We’re borrowing this concept from popular frameworks like Remix and Next.JS. Layouts make it easy to wrap Route components together in a shared set of components. A common use case is wrapping your app in a Header, Footer, or Navbar. Without layouts, you’d have a lot of code duplication</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="221"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder222--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="223,click:1"><!--placeholder224--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="225"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="226"><pre style="background-color:#0d0d0d;">
+<span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">Home</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	render! {
+</span><span style="color:#f8f8f2;">		Header {}
+</span><span style="color:#f8f8f2;">		Navbar {}
+</span><span style="color:#f8f8f2;">		div { </span><span style="color:#ffee99;">&quot;actual home content&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">		Footer {}
+</span><span style="color:#f8f8f2;">	}
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">Blog</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	render! {
+</span><span style="color:#f8f8f2;">		Header {}
+</span><span style="color:#f8f8f2;">		Navbar {}
+</span><span style="color:#f8f8f2;">		div { </span><span style="color:#ffee99;">&quot;actual blog content&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">		Footer {}
+</span><span style="color:#f8f8f2;">	}
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="227">Now, with layouts, you can declare your layout in the Route enum itself.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="228"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder229--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="230,click:1"><!--placeholder231--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="232"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="233"><pre style="background-color:#0d0d0d;">
+<span style="color:#f8f8f2;">#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]
+</span><span style="font-style:italic;color:#66d9ef;">enum </span><span style="color:#f8f8f2;">Route {
+</span><span style="color:#f8f8f2;">  #[layout(HeaderFooterNav)]
+</span><span style="color:#f8f8f2;">		#[route(</span><span style="color:#ffee99;">&quot;/&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">		Home {},
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">		#[route(</span><span style="color:#ffee99;">&quot;/blog/&quot;</span><span style="color:#f8f8f2;">)]
+</span><span style="color:#f8f8f2;">		Blog {},
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#8c8c8c;">// Wrap the rendered content of the Router with a header, navbar, and footer
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">HeaderFooterNav</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">	render! {
+</span><span style="color:#f8f8f2;">		Header {}
+</span><span style="color:#f8f8f2;">		Navbar {}
+</span><span style="color:#f8f8f2;">		Outlet::&lt;Route&gt; {}
+</span><span style="color:#f8f8f2;">		Footer {}
+</span><span style="color:#f8f8f2;">	}
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="234">The new router was an absolutely massive amount of work, spearheaded by @TeFiLeDo, improved by @ealmloff, and made possible thanks to community members like @stephenandary and @attilio-oliva.</p><p data-node-hydration="235"><img src="/assets/static/enum_router.png" alt="PR of enum router" title=""/></p><h2 id="new-and-beautiful-interactive-docs" data-node-hydration="236"><a href="#new-and-beautiful-interactive-docs" class="header">New and beautiful interactive docs</a></h2><p data-node-hydration="237">It’s about time we revamped our documentation. When we launched, the original docs were pretty good, at least for a 0.1 crate. Now, we have over 16 crates in the main repo with another half dozen scattered around the github organization. New users deserve a better introduction experience.</p><p data-node-hydration="238">To start, we revamped our landing page. Short, sweet, to the point.</p><p data-node-hydration="239"><img src="/assets/static/landing_1.png" alt="Screenshot of new doc site landing page" title=""/></p><p data-node-hydration="240">At the top of the page, you’ll see a new search bar. You can search for anything in our docs with just a  <code>ctrl+/</code> .  This new search functionality uses a <a href="https://github.com/dioxusLabs/dioxus-search">new search crate we designed and built</a>. <code>Dioxus-search</code> is fully crossplatform and ready to use in your next Dioxus app.</p><p data-node-hydration="241"><img src="/assets/static/landing_2.png" alt="Screenshot of new doc site search" title=""/></p><p data-node-hydration="242">Selecting any of the search results will take you straight to the docs page without bouncing out to an external mdbook.</p><p data-node-hydration="243"><img src="/assets/static/landing_3.png" alt="Screenshot of new doc site mdbook" title=""/></p><p data-node-hydration="244">We’ve added a bunch more content to the docs, including new pages like:</p><ul data-node-hydration="245"><li>Building a hackernews clone from scratch</li><li>Setup guides for mobile</li><li>Suggestions for useful crates</li><li>How to bundle your app</li><li>Working with server functions</li></ul><p data-node-hydration="246">The best part? The docs are interactive! Examples like the  <code>hello-world</code> and even the  <code>hackernews</code> clone come to life from within the docs page.</p><p data-node-hydration="247"><img src="/assets/static/landing_4.png" alt="Screenshot of new doc site interactivity" title=""/></p><p data-node-hydration="248">We also moved the  <code>awesome</code> dioxus page from GitHub to the docsite, so you can explore the various crates that other developers have submitted as “awesome.”</p><p data-node-hydration="249"><img src="/assets/static/landing_5.png" alt="Screenshot of new doc site awesome page" title=""/></p><p data-node-hydration="250">The new docs leverage many of the amazing new features from the router, including:</p><ul data-node-hydration="251"><li></li></ul><h2 id="android-support-ios-fixes-getting-started-guide-for-mobile" data-node-hydration="252"><a href="#android-support-ios-fixes-getting-started-guide-for-mobile" class="header">Android Support, iOS fixes, Getting Started Guide for Mobile</a></h2><p data-node-hydration="253">To date, Dioxus has provided first-party support for mobile via iOS, but our Android support has been rather spotty and untested. In this release, we finally added iOS and Android testing to our suite of continuous integration. To round off mobile support, we’ve added a <a href="https://dioxuslabs.com/learn/0.4/getting_started/mobile">mobile-specific getting started guide</a> with a walkthrough on setting up platform-specific dependencies, handling basic cross-compilation, and booting up a mobile simulator. We’ve also fixed some bugs in upstream libraries like Tauri’s Tao which gives Dioxus its window-creation capabilities.</p><p data-node-hydration="254">iOS Demo:</p><p data-node-hydration="255"><img src="/assets/static/ios_demo.png" alt="Screenshot of xcode with dioxus app" title=""/></p><p data-node-hydration="256">Android Demo:</p><p data-node-hydration="257"><img src="/assets/static/android_demo.png" alt="Screenshot of android studio with dioxus app" title=""/></p><h2 id="window-close-behavior" data-node-hydration="258"><a href="#window-close-behavior" class="header">Window-Close Behavior</a></h2><p data-node-hydration="259">Another great contribution from the community: Dioxus desktop now provides functionality for managing the “close” behavior of windows in your app. We support three modes now:</p><ul data-node-hydration="260"><li>Closing the last window kills the app</li><li>Closing the last window doesn’t kill the app</li><li>Closing the last window simply hides the window (so the window can be cmd-tabbed back)</li></ul><p data-node-hydration="261"><img src="https://i.imgur.com/m4wJ6gN.mp4" alt="window_close.mov" title=""/></p><h2 id="bidirectional-eval" data-node-hydration="262"><a href="#bidirectional-eval" class="header">Bidirectional Eval</a></h2><p data-node-hydration="263">The use_eval hook allows you to run snippets of Javascript in your Dioxus application when needed. @doge has made some improvements that make this hook has significantly more powerful. The new version of the hook is compatible between the desktop, web, and Liveview renderers. It also allows you to send messages to and from Javascript asynchronously. This makes it possible to listen for Javascript events that Dioxus doesn’t officially support like the intersection observer API.</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="264"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder265--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="266,click:1"><!--placeholder267--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="268"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="269"><pre style="background-color:#0d0d0d;">
+<span style="color:#f92672;">use </span><span style="color:#f8f8f2;">dioxus::prelude::</span><span style="color:#f92672;">*</span><span style="color:#f8f8f2;">;
+</span><span style="color:#f8f8f2;">
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">main</span><span style="color:#f8f8f2;">() {
+</span><span style="color:#f8f8f2;">    dioxus_desktop::launch(app);
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">app</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> eval </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">use_eval</span><span style="color:#f8f8f2;">(cx);
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> future </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">use_future</span><span style="color:#f8f8f2;">(cx, (), |_| {
+</span><span style="color:#f8f8f2;">        to_owned![eval];
+</span><span style="color:#f8f8f2;">        async </span><span style="color:#f92672;">move </span><span style="color:#f8f8f2;">{
+</span><span style="color:#f8f8f2;">            </span><span style="color:#8c8c8c;">// Eval some javascript
+</span><span style="color:#f8f8f2;">            </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> eval </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">eval</span><span style="color:#f8f8f2;">(
+</span><span style="color:#f8f8f2;">                </span><span style="font-style:italic;color:#66d9ef;">r</span><span style="color:#ffee99;">#&quot;dioxus.send(&quot;Hi from JS!&quot;);
+</span><span style="color:#ffee99;">                let msg = await dioxus.recv();
+</span><span style="color:#ffee99;">                console.log(msg);
+</span><span style="color:#ffee99;">                return &quot;hello world&quot;;&quot;#</span><span style="color:#f8f8f2;">,
+</span><span style="color:#f8f8f2;">            )
+</span><span style="color:#f8f8f2;">            .</span><span style="color:#66d9ef;">unwrap</span><span style="color:#f8f8f2;">();
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">            </span><span style="color:#8c8c8c;">// Send messages into the running javascript
+</span><span style="color:#f8f8f2;">            eval.</span><span style="color:#66d9ef;">send</span><span style="color:#f8f8f2;">(</span><span style="color:#ffee99;">&quot;Hi from Rust!&quot;</span><span style="color:#f8f8f2;">.</span><span style="color:#66d9ef;">into</span><span style="color:#f8f8f2;">()).</span><span style="color:#66d9ef;">unwrap</span><span style="color:#f8f8f2;">();
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">            </span><span style="color:#8c8c8c;">// Receive messages from the javascript
+</span><span style="color:#f8f8f2;">            </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> res </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> eval.</span><span style="color:#66d9ef;">recv</span><span style="color:#f8f8f2;">().await.</span><span style="color:#66d9ef;">unwrap</span><span style="color:#f8f8f2;">();
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">            </span><span style="color:#8c8c8c;">// Wait for it to complete
+</span><span style="color:#f8f8f2;">            println!(</span><span style="color:#ffee99;">&quot;</span><span style="color:#ff80f4;">{:?}</span><span style="color:#ffee99;">&quot;</span><span style="color:#f8f8f2;">, eval.await);
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">            res
+</span><span style="color:#f8f8f2;">        }
+</span><span style="color:#f8f8f2;">    });
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">    render!{ </span><span style="color:#ffee99;">&quot;{future.value():?}&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><h2 id="new-onmount-event" data-node-hydration="270"><a href="#new-onmount-event" class="header">New onmount event</a></h2><p data-node-hydration="271">This release also introduces a new onmounted event that provides access to elements after they are created in a cross platform way. The onmounted event makes it possible to:</p><ul data-node-hydration="272"><li>Scroll to an element</li><li>Read the size of an element</li><li>Focus an element</li><li>Get the platform specific element</li></ul><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="273"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder274--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="275,click:1"><!--placeholder276--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="277"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="278"><pre style="background-color:#0d0d0d;">
+<span style="color:#f92672;">use </span><span style="color:#f8f8f2;">dioxus::prelude::</span><span style="color:#f92672;">*</span><span style="color:#f8f8f2;">;
+</span><span style="color:#f8f8f2;">
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">main</span><span style="color:#f8f8f2;">() {
+</span><span style="color:#f8f8f2;">    dioxus_desktop::launch(app);
+</span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">
+</span><span style="font-style:italic;color:#66d9ef;">fn </span><span style="color:#a6e22e;">app</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#fd971f;">cx</span><span style="color:#f8f8f2;">: Scope) -&gt; Element {
+</span><span style="color:#f8f8f2;">    </span><span style="font-style:italic;color:#66d9ef;">let</span><span style="color:#f8f8f2;"> header_element </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">use_state</span><span style="color:#f8f8f2;">(cx, || </span><span style="font-style:italic;color:#66d9ef;">None</span><span style="color:#f8f8f2;">);
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">    cx.</span><span style="color:#66d9ef;">render</span><span style="color:#f8f8f2;">(rsx!(
+</span><span style="color:#f8f8f2;">        div {
+</span><span style="color:#f8f8f2;">            h1 {
+</span><span style="color:#f8f8f2;">                onmounted: </span><span style="color:#f92672;">move |</span><span style="color:#f8f8f2;">cx</span><span style="color:#f92672;">| </span><span style="color:#f8f8f2;">{
+</span><span style="color:#f8f8f2;">                    header_element.</span><span style="color:#66d9ef;">set</span><span style="color:#f8f8f2;">(</span><span style="font-style:italic;color:#66d9ef;">Some</span><span style="color:#f8f8f2;">(cx.</span><span style="color:#66d9ef;">inner</span><span style="color:#f8f8f2;">().</span><span style="color:#66d9ef;">clone</span><span style="color:#f8f8f2;">()));
+</span><span style="color:#f8f8f2;">                },
+</span><span style="color:#f8f8f2;">                </span><span style="color:#ffee99;">&quot;Scroll to top example&quot;
+</span><span style="color:#f8f8f2;">            }
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">            </span><span style="color:#f92672;">for</span><span style="color:#f8f8f2;"> i </span><span style="color:#f92672;">in </span><span style="color:#ff80f4;">0</span><span style="color:#f92672;">..</span><span style="color:#ff80f4;">40 </span><span style="color:#f8f8f2;">{
+</span><span style="color:#f8f8f2;">                div { </span><span style="color:#ffee99;">&quot;Item {i}&quot; </span><span style="color:#f8f8f2;">}
+</span><span style="color:#f8f8f2;">            }
+</span><span style="color:#f8f8f2;">
+</span><span style="color:#f8f8f2;">            button {
+</span><span style="color:#f8f8f2;">                onclick: </span><span style="color:#f92672;">move |_| </span><span style="color:#f8f8f2;">{
+</span><span style="color:#f8f8f2;">                    </span><span style="color:#f92672;">if </span><span style="font-style:italic;color:#66d9ef;">let Some</span><span style="color:#f8f8f2;">(header) </span><span style="color:#f92672;">=</span><span style="color:#f8f8f2;"> header_element.</span><span style="color:#66d9ef;">as_ref</span><span style="color:#f8f8f2;">() {
+</span><span style="color:#f8f8f2;">                        header.</span><span style="color:#66d9ef;">scroll_to</span><span style="color:#f8f8f2;">(ScrollBehavior::Smooth);
+</span><span style="color:#f8f8f2;">                    }
+</span><span style="color:#f8f8f2;">                },
+</span><span style="color:#f8f8f2;">                </span><span style="color:#ffee99;">&quot;Scroll to top&quot;
+</span><span style="color:#f8f8f2;">            }
+</span><span style="color:#f8f8f2;">        }
+</span><span style="color:#f8f8f2;">    ))
+</span><span style="color:#f8f8f2;">}</span></pre>
+</div></div><p data-node-hydration="279"><img src="https://i.imgur.com/yp7GyIf.mp4" alt="Scroll demo" title=""/></p><h2 id="renaming-dioxus-cli-to-dx" data-node-hydration="280"><a href="#renaming-dioxus-cli-to-dx" class="header">Renaming dioxus-cli to dx</a></h2><p data-node-hydration="281">We made a small tweak to the CLI this release to rename the CLI from  <code>dioxus</code> to  <code>dx</code>. This is a tiny change but has a few benefits:</p><ul data-node-hydration="282"><li>It’s faster to type</li><li>It emphasizes the <em>developer experience</em> of Dioxus</li><li>It keeps our tooling agnostic to other projects that might want to take advantage of features like hotreloading, autoformatting, wasm-pack, tailwind integration, plugins, and more.</li></ul><p data-node-hydration="283">To install the new CLI, use the same old instructions:</p><div class="border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-2" data-node-hydration="284"><div class="w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack"><div class="font-mono"><!--placeholder285--></div><button class="hover:text-blue-600 flex flex-row items-center gap-1 " onclick="navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);" data-node-hydration="286,click:1"><!--placeholder287--><span><svg width="24" height="24" stroke-width="1.5" fill="none" stroke="currentColor" data-node-hydration="288"><path d="M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8"></path></svg></span></button></div><div class="codeblock" data-node-hydration="289"><pre style="background-color:#0d0d0d;">
+<span style="color:#f8f8f2;">cargo install dioxus</span><span style="color:#f92672;">-</span><span style="color:#f8f8f2;">cli </span><span style="color:#f92672;">--</span><span style="color:#f8f8f2;">force</span></pre>
+</div></div><h2 id="hot-reloading-for-desktop" data-node-hydration="290"><a href="#hot-reloading-for-desktop" class="header">Hot Reloading for Desktop</a></h2><p data-node-hydration="291">Yet another small tweak the CLI: you can now use  <code>dx serve</code> on desktop apps with hot reloading enabled! Using the same hot reloading engine that powers web,  <code>dx serve</code> can now modify your currently-running desktop without causing a full rebuild. In the event that we can’t hot reload a particular change, then  <code>dx serve</code> will shutdown the app and restart it with the new changes applied.</p><p data-node-hydration="292"><img src="https://i.imgur.com/ML93XtT.mp4" alt="Hotreloading on desktop" title=""/></p><h2 id="dioxus-bundle" data-node-hydration="293"><a href="#dioxus-bundle" class="header">Dioxus-Bundle</a></h2><p data-node-hydration="294">So far, the CLI has supported useful commands like  <code>dx fmt</code> ,  <code>dx build</code> ,  <code>dx serve</code> . Until date, we haven’t provided a command to build a final distributable image of your app. In 0.4, we’re incorporating cargo-bundle support into the Dioxus CLI. Now, from the Dioxus CLI, you can bundle your app using the same configuration options as the Tauri bundler, making it easy to migrate existing projects over.  <code>dx bundle</code> supports bundling apps for macOS, iOS, Windows, and Linux (.deb, .rpm).</p><p data-node-hydration="295"><img src="/assets/static/bundle.png" alt="A bundled app on macos" title=""/></p><p data-node-hydration="296">This is a great place for new contributors to help flesh out the ecosystem!</p><h2 id="dioxus-check" data-node-hydration="297"><a href="#dioxus-check" class="header">Dioxus-Check</a></h2><p data-node-hydration="298">The Dioxus CLI has a new helper command:  <code>dx check</code>. Thanks to the work from community member @eventualbuddha,  <code>dx check</code> will now identify and help mitigate issues like hooks being called inside conditionals and loops.</p><p data-node-hydration="299"><img src="/assets/static/dxcheck.png" alt="The new check command for dx" title=""/></p><p data-node-hydration="300">These lints make it easier for newcomers to Dioxus to get started, especially if they’re not super familiar with React.</p><h2 id="vscode-extension-updates" data-node-hydration="301"><a href="#vscode-extension-updates" class="header">VSCode Extension Updates</a></h2><p data-node-hydration="302">As part of improving stability and fixing bugs, we’ve made some improvements to the VSCode Extension.</p><ul data-node-hydration="303"><li>We fixed a bug with activation events where the extension wouldn’t activate until one of the commands were manually fired</li><li>We fixed a handful of autoformatting bugs around event handlers</li><li>We’ve moved the code for the extension out of the CLI and into a small WebAssembly binary so you don’t need the CLI installed and version matched</li></ul><p data-node-hydration="304"><img src="/assets/static/extension.png" alt="The Dioxus VSCode extension page" title=""/></p><p data-node-hydration="305">The extension is a great place for new contributors to dive into the Dioxus codebase!</p><h2 id="general-fixes" data-node-hydration="306"><a href="#general-fixes" class="header">General Fixes</a></h2><ul data-node-hydration="307"><li>Several SSR and Hydration bugs were fixed including escaping text, and</li><li>We have improved testing around Dioxus. We have added end to end tests for each platform and fuzzing tests for core libraries.</li><li>Fix the provide context docs</li><li>Fix trait bounds on generics with component</li><li>Fix hot reloading in a workspace</li><li>Fix anchor link for block-level elements</li><li>Fix Guide link in README</li><li>Fix new Clippy lints</li><li>Fix event bubbling within a single template</li><li>Fix panic when waking future on shutdown</li><li>Fix style attributes in SSR</li><li>Fix more complex workspaces with hot reloading</li><li>Fix non-bubbling listener hydration</li><li>Hotfix wry segfaulting</li><li>Fix dangerous_inner_html with SSR</li><li>Fix Linux Wry dependencies</li><li>Fix native core dependencies in a different direction than the pass direction</li><li>Fix raw attribute values in SSR</li><li>fix: Update logos and custom assets example</li><li>Fix non-ascii string decoding</li><li>fix rng in svg dice example</li><li>Fix clippy in the generic component example</li><li>fix: change crossterm poll timeout to 10ms from 1s</li><li>Fix HTML to RSX conversions example</li><li>Fix LiveView Tokio features</li><li>Fix non-bubbling event propagation</li><li>Fix selected and checked with boolean attributes</li><li>Fix form events with select multiple</li><li>Fix click and input events on desktop</li><li>Fix the link to tui widgets in the guide</li><li>Fix duplicate example and test names</li><li>fix router book link</li><li>Fix web events starting on a text node</li><li>Fix links in Liveview</li><li>Fix URL encoded desktop assets</li><li>Fix ssr guide examples</li><li>Fix hot reloading with namespaces</li><li>Add initial_value attribute &amp; fix static special attribute handling</li><li>Fix liveview interpreter JS</li><li>Fix autoformatting raw strings</li><li>Fix panic when events trigger on placeholders</li><li>fix: Remove dbg that was causing TUI rendering problems</li><li>Fix restarting MacOs hot reloading after a forced exit</li><li>Fix <code>cargo doc</code></li><li>Fix: Remove play button from guide example</li><li>Fix: bump liveview salvo version to 0.44.1. (#1124)</li><li>fix: Remove conflicting rustfmt config for cli</li><li>fix(docs): Fix dioxus-hooks crate description</li><li>Fix CLI testing issue</li><li>Fix boolean attributes with raw boolean values</li><li>fix: Properly drop UseFuture&#x27;s values to avoid leaking memory</li><li>Fix the onload event</li><li>fix: Fix stop_propagation example</li><li>Fix playwrite tests</li><li>Fix playwright fullstack clippy</li><li>fix: readme awesome link</li><li>fix: Remove duplicated doc links and improved some descriptions</li><li>Fix the issue of duplicate unique ID for atoms using <code>newtype</code>.</li><li>fix(cli): improve error message for invalid config</li><li>fix: Update use_ref docs</li><li>Fix playwright (again) and move the playwright stuff into the playwright directory</li><li>Fix: dont use bumpslab anymore, just box scopestates</li><li>Fix race condition in use_future</li><li>Fix use_future always spawning a new task and never updating</li><li>Fix route prerendering</li><li>fix: Use correct cfg for file_watcher feature in dioxus-hot-reload</li><li>docs(clean): fix copy-paste docs from <code>build</code></li><li>fix: Update use_coroutine example</li><li>fix(playwright): remove unnecessary <code>await</code>s</li><li>Fix all broken examples</li><li>Fix root component suspense</li></ul></div></section><footer class="text-gray-700 dark:text-gray-400 w-full mx-auto max-w-screen-xl px-2" data-node-hydration="308"><div class="py-8 md:py-24 flex flex-wrap justify-between items-start lg:items-start md:flex-row md:flex-nowrap  gap-x-24 gap-y-8 mx-auto"><div data-node-hydration="309"><h2 class="text-md mb-3 text-black dark:text-gray-100"><!--node-id310-->Community<!--#--></h2><nav class="list-none font-extralight "><ul class="space-y-2"><li data-node-hydration="311"><a class="" href="https://github.com/dioxuslabs" data-node-hydration="312"><!--node-id313-->Github<!--#--></a></li><li data-node-hydration="314"><a class="" href="https://discord.gg/XgGxMSkvUM" data-node-hydration="315"><!--node-id316-->Discord<!--#--></a></li><li data-node-hydration="317"><a class="" href="https://twitter.com/dioxuslabs" data-node-hydration="318"><!--node-id319-->Twitter<!--#--></a></li><li data-node-hydration="320"><a class="" href="https://www.youtube.com/@DioxusLabs" data-node-hydration="321"><!--node-id322-->YouTube<!--#--></a></li></ul></nav></div><div data-node-hydration="323"><h2 class="text-md mb-3 text-black dark:text-gray-100"><!--node-id324-->Resources<!--#--></h2><nav class="list-none font-extralight "><ul class="space-y-2"><li data-node-hydration="325"><a class="" href="https://docs.rs/dioxus" data-node-hydration="326"><!--node-id327-->docs.rs<!--#--></a></li><li data-node-hydration="328"><a class="" href="https://crates.io/crates/dioxus" data-node-hydration="329"><!--node-id330-->crates.io<!--#--></a></li><li data-node-hydration="331"><a class="" href="/learn/0.5/guide" data-node-hydration="332"><!--node-id333-->Guide<!--#--></a></li><li data-node-hydration="334"><a class="" href="/awesome" data-node-hydration="335"><!--node-id336-->Awesome<!--#--></a></li><li data-node-hydration="337"><a class="" href="/play" data-node-hydration="338"><!--node-id339-->Playground<!--#--></a></li></ul></nav></div><div data-node-hydration="340"><h2 class="text-md mb-3 text-black dark:text-gray-100"><!--node-id341-->Projects<!--#--></h2><nav class="list-none font-extralight "><ul class="space-y-2"><li data-node-hydration="342"><a class="" href="https://github.com/DioxusLabs/dioxus" data-node-hydration="343"><!--node-id344-->Dioxus<!--#--></a></li><li data-node-hydration="345"><a class="" href="https://github.com/DioxusLabs/dioxus/tree/main/packages/cli" data-node-hydration="346"><!--node-id347-->CLI<!--#--></a></li><li data-node-hydration="348"><a class="" href="https://github.com/DioxusLabs/taffy" data-node-hydration="349"><!--node-id350-->Taffy<!--#--></a></li><li data-node-hydration="351"><a class="" href="https://github.com/DioxusLabs/blitz" data-node-hydration="352"><!--node-id353-->Blitz<!--#--></a></li><li data-node-hydration="354"><a class="" href="https://github.com/DioxusLabs/sdk" data-node-hydration="355"><!--node-id356-->SDK<!--#--></a></li></ul></nav></div><div class="text-left md:text-left"><a class="flex items-center gap-1" href="https://github.com/DioxusLabs"><div><span class="text-lg font-mono dark:text-gray-100">DIOXUS</span></div><img src="https://avatars.githubusercontent.com/u/79236386?s=200&v=4" class="h-6 w-auto" alt="Dioxus Labs Icon"/></a><span class="text-xs">Build cool things ✌️</span></div></div><div class="text-gray-400 text-sm text-center sm:text-left pb-2 mx-auto">© 2024 Dioxus Labs</div></footer></div></div><script>window.initial_dioxus_hydration_data="mB2BGPaBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPWBGPU=";</script></div>
+  <script>
+            // We can't use a module script here because we need to start the script immediately when streaming
+            import("/./wasm/dioxus_docs_site.js").then(
+                ({ default: init }) => {
+                init("/./wasm/dioxus_docs_site_bg.wasm").then((wasm) => {
+                    if (wasm.__wbindgen_start == undefined) {
+                    wasm.main();
                     }
-                },
-                <span class="hljs-string">"Scroll to top"</span>
-            }
-        }
-    ))
-}
-</code></pre>
-<p><video controls autoplay muted src="https://i.imgur.com/yp7GyIf.mp4" alt="Scroll demo"></p>
-<h2 id="renaming-dioxus-cli-to-dx">Renaming dioxus-cli to dx</h2>
-<p>We made a small tweak to the CLI this release to rename the CLI from <code>dioxus</code> to <code>dx</code>. This is a tiny change but has a few benefits:</p>
-<ul>
-<li>It’s faster to type</li>
-<li>It emphasizes the <em>developer experience</em> of Dioxus</li>
-<li>It keeps our tooling agnostic to other projects that might want to take advantage of features like hotreloading, autoformatting, wasm-pack, tailwind integration, plugins, and more.</li>
-</ul>
-<p>To install the new CLI, use the same old instructions:</p>
-<pre><code class="lang-rust">cargo <span class="hljs-keyword">install </span><span class="hljs-keyword">dioxus-cli </span>--force
-</code></pre>
-<h2 id="hot-reloading-for-desktop">Hot Reloading for Desktop</h2>
-<p>Yet another small tweak the CLI: you can now use <code>dx serve</code> on desktop apps with hot reloading enabled! Using the same hot reloading engine that powers web, <code>dx serve</code> can now modify your currently-running desktop without causing a full rebuild. In the event that we can’t hot reload a particular change, then <code>dx serve</code> will shutdown the app and restart it with the new changes applied.</p>
-<p><video controls autoplay muted src="https://i.imgur.com/ML93XtT.mp4" alt="Hotreloading on desktop"></p>
-<h2 id="dioxus-bundle">Dioxus-Bundle</h2>
-<p>So far, the CLI has supported useful commands like <code>dx fmt</code> , <code>dx build</code> , <code>dx serve</code> . Until date, we haven’t provided a command to build a final distributable image of your app. In 0.4, we’re incorporating cargo-bundle support into the Dioxus CLI. Now, from the Dioxus CLI, you can bundle your app using the same configuration options as the Tauri bundler, making it easy to migrate existing projects over. <code>dx bundle</code> supports bundling apps for macOS, iOS, Windows, and Linux (.deb, .rpm).</p>
-<p><img src="/static/bundle.png" alt="A bundled app on macos"></p>
-<p>This is a great place for new contributors to help flesh out the ecosystem!</p>
-<h2 id="dioxus-check">Dioxus-Check</h2>
-<p>The Dioxus CLI has a new helper command: <code>dx check</code>. Thanks to the work from community member @eventualbuddha, <code>dx check</code> will now identify and help mitigate issues like hooks being called inside conditionals and loops.</p>
-<p><img src="/static/dxcheck.png" alt="The new check command for dx"></p>
-<p>These lints make it easier for newcomers to Dioxus to get started, especially if they’re not super familiar with React.</p>
-<h2 id="vscode-extension-updates">VSCode Extension Updates</h2>
-<p>As part of improving stability and fixing bugs, we’ve made some improvements to the VSCode Extension.</p>
-<ul>
-<li>We fixed a bug with activation events where the extension wouldn’t activate until one of the commands were manually fired</li>
-<li>We fixed a handful of autoformatting bugs around event handlers</li>
-<li>We’ve moved the code for the extension out of the CLI and into a small WebAssembly binary so you don’t need the CLI installed and version matched</li>
-</ul>
-<p><img src="/static/extension.png" alt="The Dioxus VSCode extension page"></p>
-<p>The extension is a great place for new contributors to dive into the Dioxus codebase!</p>
-<h2 id="general-fixes">General Fixes</h2>
-<ul>
-<li>Several SSR and Hydration bugs were fixed including escaping text, and</li>
-<li>We have improved testing around Dioxus. We have added end to end tests for each platform and fuzzing tests for core libraries.</li>
-<li>Fix the provide context docs</li>
-<li>Fix trait bounds on generics with component</li>
-<li>Fix hot reloading in a workspace</li>
-<li>Fix anchor link for block-level elements</li>
-<li>Fix Guide link in README</li>
-<li>Fix new Clippy lints</li>
-<li>Fix event bubbling within a single template</li>
-<li>Fix panic when waking future on shutdown</li>
-<li>Fix style attributes in SSR</li>
-<li>Fix more complex workspaces with hot reloading</li>
-<li>Fix non-bubbling listener hydration</li>
-<li>Hotfix wry segfaulting</li>
-<li>Fix dangerous_inner_html with SSR</li>
-<li>Fix Linux Wry dependencies</li>
-<li>Fix native core dependencies in a different direction than the pass direction</li>
-<li>Fix raw attribute values in SSR</li>
-<li>fix: Update logos and custom assets example</li>
-<li>Fix non-ascii string decoding</li>
-<li>fix rng in svg dice example</li>
-<li>Fix clippy in the generic component example</li>
-<li>fix: change crossterm poll timeout to 10ms from 1s</li>
-<li>Fix HTML to RSX conversions example</li>
-<li>Fix LiveView Tokio features</li>
-<li>Fix non-bubbling event propagation</li>
-<li>Fix selected and checked with boolean attributes</li>
-<li>Fix form events with select multiple</li>
-<li>Fix click and input events on desktop</li>
-<li>Fix the link to tui widgets in the guide</li>
-<li>Fix duplicate example and test names</li>
-<li>fix router book link</li>
-<li>Fix web events starting on a text node</li>
-<li>Fix links in Liveview</li>
-<li>Fix URL encoded desktop assets</li>
-<li>Fix ssr guide examples</li>
-<li>Fix hot reloading with namespaces</li>
-<li>Add initial_value attribute &amp; fix static special attribute handling</li>
-<li>Fix liveview interpreter JS</li>
-<li>Fix autoformatting raw strings</li>
-<li>Fix panic when events trigger on placeholders</li>
-<li>fix: Remove dbg that was causing TUI rendering problems</li>
-<li>Fix restarting MacOs hot reloading after a forced exit</li>
-<li>Fix <code>cargo doc</code></li>
-<li>Fix: Remove play button from guide example</li>
-<li>Fix: bump liveview salvo version to 0.44.1. (#1124)</li>
-<li>fix: Remove conflicting rustfmt config for cli</li>
-<li>fix(docs): Fix dioxus-hooks crate description</li>
-<li>Fix CLI testing issue</li>
-<li>Fix boolean attributes with raw boolean values</li>
-<li>fix: Properly drop UseFuture&#39;s values to avoid leaking memory</li>
-<li>Fix the onload event</li>
-<li>fix: Fix stop_propagation example</li>
-<li>Fix playwrite tests</li>
-<li>Fix playwright fullstack clippy</li>
-<li>fix: readme awesome link</li>
-<li>fix: Remove duplicated doc links and improved some descriptions</li>
-<li>Fix the issue of duplicate unique ID for atoms using <code>newtype</code>.</li>
-<li>fix(cli): improve error message for invalid config</li>
-<li>fix: Update use_ref docs</li>
-<li>Fix playwright (again) and move the playwright stuff into the playwright directory</li>
-<li>Fix: dont use bumpslab anymore, just box scopestates</li>
-<li>Fix race condition in use_future</li>
-<li>Fix use_future always spawning a new task and never updating</li>
-<li>Fix route prerendering</li>
-<li>fix: Use correct cfg for file_watcher feature in dioxus-hot-reload</li>
-<li>docs(clean): fix copy-paste docs from <code>build</code></li>
-<li>fix: Update use_coroutine example</li>
-<li>fix(playwright): remove unnecessary <code>await</code>s</li>
-<li>Fix all broken examples</li>
-<li>Fix root component suspense</li>
-</ul>
-<h2 id="what-is-next-">What is next?</h2>
-<p>The 0.4 release has been a huge improvement for Dioxus, but we are not done yet! Dioxus is under active development. For the next release, we&#39;re looking to add:</p>
-<ul>
-<li><em>Subtree rendering</em> for multiple windows, modals, portals, and cached background frames</li>
-<li>Make CX methods like <code>spawn</code>/ <code>mark_dirty</code> / <code>consume_context</code> global</li>
-<li>Remove lifetimes from EventHandler and Element and rework borrowed props</li>
-<li>Continue adding APIs to Dioxus STD</li>
-</ul>
-<p>The full roadmap for 0.5 and beyond, you can see the public <a href="https://www.notion.so/Dioxus-Labs-Public-Roadmap-771939f47d13423abe2a2195b5617555?pvs=21">roadmap</a>.</p>
-<p>If any of those features sound interesting or you want to propose a new feature, consider contributing on <a href="https://github.com/DioxusLabs/dioxus">Github</a>. The <a href="https://dioxuslabs.com/learn/0.4/contributing">new contributor guide</a> can help you get started with your first contribution!</p>
-<p>If you are interested in building an app with Dioxus, join the <a href="https://discord.gg/XgGxMSkvUM">Discord</a> and get involved with the community!</p>
-</article><script>Prism.highlightAll()</script></div></div></section><footer class="sticky z-30 text-gray-400 bg-ghmetal body-font "><div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col"><div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left"><a class="flex title-font font-medium items-center md:justify-start justify-center text-white" href="https://github.com/DioxusLabs/dioxus"><img src="https://avatars.githubusercontent.com/u/79236386?s=200&v=4" class="h-8 w-auto" alt="Dioxus Labs Icon"/><span class="ml-3 text-xl">Dioxus Labs</span></a><p class="mt-2 text-sm text-gray-500">An Open Source project dedicated to making Rust UI wonderful.</p></div><div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"><div class="lg:w-1/4 md:w-1/2 w-full px-4"><h2 class="title-font font-medium text-white tracking-widest text-sm mb-3"><!--#-->Community<!--#--></h2><nav class="list-none mb-10"><ul><li><a class="text-gray-400 hover:text-white" href="https://github.com/dioxuslabs"><!--#-->Github<!--#--></a></li><li><a class="text-gray-400 hover:text-white" href="https://twitter.com/dioxuslabs"><!--#-->Twitter<!--#--></a></li><li><a class="text-gray-400 hover:text-white" href="https://discord.gg/XgGxMSkvUM"><!--#-->Discord<!--#--></a></li></ul></nav></div><div class="lg:w-1/4 md:w-1/2 w-full px-4"><h2 class="title-font font-medium text-white tracking-widest text-sm mb-3"><!--#-->Learning<!--#--></h2><nav class="list-none mb-10"><ul><li><a class="text-gray-400 hover:text-white" href="https://docs.rs/dioxus"><!--#-->docs.rs<!--#--></a></li><li><a class="text-gray-400 hover:text-white" href="/learn/0.4/guide"><!--#-->Guide<!--#--></a></li><li><a class="text-gray-400 hover:text-white" href="/awesome"><!--#-->Awesome<!--#--></a></li></ul></nav></div><div class="lg:w-1/4 md:w-1/2 w-full px-4"><h2 class="title-font font-medium text-white tracking-widest text-sm mb-3"><!--#-->Projects<!--#--></h2><nav class="list-none mb-10"><ul><li><a class="text-gray-400 hover:text-white" href="https://github.com/DioxusLabs/dioxus"><!--#-->Dioxus<!--#--></a></li><li><a class="text-gray-400 hover:text-white" href="https://github.com/DioxusLabs/dioxus/tree/master/packages/cli"><!--#-->CLI<!--#--></a></li><li><a class="text-gray-400 hover:text-white" href="https://github.com/DioxusLabs/taffy"><!--#-->Taffy<!--#--></a></li></ul></nav></div></div></div><div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row"><p class="text-gray-400 text-sm text-center sm:text-left">© 2023 Dioxus Labs —<a class="text-gray-500 ml-1" rel="noopener noreferrer" href="https://twitter.com/dioxuslabs" target="_blank">@dioxuslabs</a></p></div></footer></div><meta hidden="true" id="dioxus-storage-props" data-serialized="AQ==" /><meta hidden="true" id="dioxus-storage-data" data-serialized="AA==" /></div>
-    <!-- Note the usage of `type=module` here as this is an ES6 module -->
-    <script type="module">
-      import init from "/./assets/dioxus/docsite.js";
-      init("/./assets/dioxus/docsite_bg.wasm").then((wasm) => {
-        if (wasm.__wbindgen_start == undefined) {
-          wasm.main();
-        }
-      });
-    </script>
-    <script src="/static/prism/prism.js"></script>
-    
-  </body>
+                });
+                }
+            );
+            </script>
+            
+            </body>
 </html>
